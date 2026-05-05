@@ -1,0 +1,620 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9F4F1D3D2FA917EE00936107 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4F1D3C2FA917EE00936107 /* AppDelegate.swift */; };
+		9F4F1D3F2FA917EE00936107 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4F1D3E2FA917EE00936107 /* SceneDelegate.swift */; };
+		9F4F1D412FA917EE00936107 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4F1D402FA917EE00936107 /* ViewController.swift */; };
+		9F4F1D442FA917EE00936107 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F4F1D422FA917EE00936107 /* Main.storyboard */; };
+		9F4F1D472FA917EE00936107 /* Sporta.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9F4F1D452FA917EE00936107 /* Sporta.xcdatamodeld */; };
+		9F4F1D492FA917F700936107 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F4F1D482FA917F700936107 /* Assets.xcassets */; };
+		9F4F1D4C2FA917F700936107 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F4F1D4A2FA917F700936107 /* LaunchScreen.storyboard */; };
+		9F4F1D572FA917F800936107 /* SportaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4F1D562FA917F800936107 /* SportaTests.swift */; };
+		9F4F1D612FA917F800936107 /* SportaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4F1D602FA917F800936107 /* SportaUITests.swift */; };
+		9F4F1D632FA917F800936107 /* SportaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4F1D622FA917F800936107 /* SportaUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9F4F1D532FA917F700936107 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9F4F1D312FA917EE00936107 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9F4F1D382FA917EE00936107;
+			remoteInfo = Sporta;
+		};
+		9F4F1D5D2FA917F800936107 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9F4F1D312FA917EE00936107 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9F4F1D382FA917EE00936107;
+			remoteInfo = Sporta;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9F4F1D392FA917EE00936107 /* Sporta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sporta.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F4F1D3C2FA917EE00936107 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9F4F1D3E2FA917EE00936107 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		9F4F1D402FA917EE00936107 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9F4F1D432FA917EE00936107 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9F4F1D462FA917EE00936107 /* Sporta.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Sporta.xcdatamodel; sourceTree = "<group>"; };
+		9F4F1D482FA917F700936107 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9F4F1D4B2FA917F700936107 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9F4F1D4D2FA917F700936107 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9F4F1D522FA917F700936107 /* SportaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SportaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F4F1D562FA917F800936107 /* SportaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportaTests.swift; sourceTree = "<group>"; };
+		9F4F1D5C2FA917F800936107 /* SportaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SportaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F4F1D602FA917F800936107 /* SportaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportaUITests.swift; sourceTree = "<group>"; };
+		9F4F1D622FA917F800936107 /* SportaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportaUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9F4F1D362FA917EE00936107 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9F4F1D4F2FA917F700936107 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9F4F1D592FA917F800936107 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9F4F1D302FA917EE00936107 = {
+			isa = PBXGroup;
+			children = (
+				9F4F1D3B2FA917EE00936107 /* Sporta */,
+				9F4F1D552FA917F700936107 /* SportaTests */,
+				9F4F1D5F2FA917F800936107 /* SportaUITests */,
+				9F4F1D3A2FA917EE00936107 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9F4F1D3A2FA917EE00936107 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9F4F1D392FA917EE00936107 /* Sporta.app */,
+				9F4F1D522FA917F700936107 /* SportaTests.xctest */,
+				9F4F1D5C2FA917F800936107 /* SportaUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9F4F1D3B2FA917EE00936107 /* Sporta */ = {
+			isa = PBXGroup;
+			children = (
+				9F4F1D3C2FA917EE00936107 /* AppDelegate.swift */,
+				9F4F1D3E2FA917EE00936107 /* SceneDelegate.swift */,
+				9F4F1D402FA917EE00936107 /* ViewController.swift */,
+				9F4F1D422FA917EE00936107 /* Main.storyboard */,
+				9F4F1D482FA917F700936107 /* Assets.xcassets */,
+				9F4F1D4A2FA917F700936107 /* LaunchScreen.storyboard */,
+				9F4F1D4D2FA917F700936107 /* Info.plist */,
+				9F4F1D452FA917EE00936107 /* Sporta.xcdatamodeld */,
+			);
+			path = Sporta;
+			sourceTree = "<group>";
+		};
+		9F4F1D552FA917F700936107 /* SportaTests */ = {
+			isa = PBXGroup;
+			children = (
+				9F4F1D562FA917F800936107 /* SportaTests.swift */,
+			);
+			path = SportaTests;
+			sourceTree = "<group>";
+		};
+		9F4F1D5F2FA917F800936107 /* SportaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				9F4F1D602FA917F800936107 /* SportaUITests.swift */,
+				9F4F1D622FA917F800936107 /* SportaUITestsLaunchTests.swift */,
+			);
+			path = SportaUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9F4F1D382FA917EE00936107 /* Sporta */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9F4F1D662FA917F800936107 /* Build configuration list for PBXNativeTarget "Sporta" */;
+			buildPhases = (
+				9F4F1D352FA917EE00936107 /* Sources */,
+				9F4F1D362FA917EE00936107 /* Frameworks */,
+				9F4F1D372FA917EE00936107 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Sporta;
+			productName = Sporta;
+			productReference = 9F4F1D392FA917EE00936107 /* Sporta.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9F4F1D512FA917F700936107 /* SportaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9F4F1D692FA917F800936107 /* Build configuration list for PBXNativeTarget "SportaTests" */;
+			buildPhases = (
+				9F4F1D4E2FA917F700936107 /* Sources */,
+				9F4F1D4F2FA917F700936107 /* Frameworks */,
+				9F4F1D502FA917F700936107 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9F4F1D542FA917F700936107 /* PBXTargetDependency */,
+			);
+			name = SportaTests;
+			productName = SportaTests;
+			productReference = 9F4F1D522FA917F700936107 /* SportaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		9F4F1D5B2FA917F800936107 /* SportaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9F4F1D6C2FA917F800936107 /* Build configuration list for PBXNativeTarget "SportaUITests" */;
+			buildPhases = (
+				9F4F1D582FA917F800936107 /* Sources */,
+				9F4F1D592FA917F800936107 /* Frameworks */,
+				9F4F1D5A2FA917F800936107 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9F4F1D5E2FA917F800936107 /* PBXTargetDependency */,
+			);
+			name = SportaUITests;
+			productName = SportaUITests;
+			productReference = 9F4F1D5C2FA917F800936107 /* SportaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9F4F1D312FA917EE00936107 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					9F4F1D382FA917EE00936107 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					9F4F1D512FA917F700936107 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 9F4F1D382FA917EE00936107;
+					};
+					9F4F1D5B2FA917F800936107 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 9F4F1D382FA917EE00936107;
+					};
+				};
+			};
+			buildConfigurationList = 9F4F1D342FA917EE00936107 /* Build configuration list for PBXProject "Sporta" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9F4F1D302FA917EE00936107;
+			productRefGroup = 9F4F1D3A2FA917EE00936107 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9F4F1D382FA917EE00936107 /* Sporta */,
+				9F4F1D512FA917F700936107 /* SportaTests */,
+				9F4F1D5B2FA917F800936107 /* SportaUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9F4F1D372FA917EE00936107 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F4F1D4C2FA917F700936107 /* LaunchScreen.storyboard in Resources */,
+				9F4F1D492FA917F700936107 /* Assets.xcassets in Resources */,
+				9F4F1D442FA917EE00936107 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9F4F1D502FA917F700936107 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9F4F1D5A2FA917F800936107 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9F4F1D352FA917EE00936107 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F4F1D472FA917EE00936107 /* Sporta.xcdatamodeld in Sources */,
+				9F4F1D412FA917EE00936107 /* ViewController.swift in Sources */,
+				9F4F1D3D2FA917EE00936107 /* AppDelegate.swift in Sources */,
+				9F4F1D3F2FA917EE00936107 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9F4F1D4E2FA917F700936107 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F4F1D572FA917F800936107 /* SportaTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9F4F1D582FA917F800936107 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F4F1D612FA917F800936107 /* SportaUITests.swift in Sources */,
+				9F4F1D632FA917F800936107 /* SportaUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9F4F1D542FA917F700936107 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9F4F1D382FA917EE00936107 /* Sporta */;
+			targetProxy = 9F4F1D532FA917F700936107 /* PBXContainerItemProxy */;
+		};
+		9F4F1D5E2FA917F800936107 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9F4F1D382FA917EE00936107 /* Sporta */;
+			targetProxy = 9F4F1D5D2FA917F800936107 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9F4F1D422FA917EE00936107 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9F4F1D432FA917EE00936107 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9F4F1D4A2FA917F700936107 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9F4F1D4B2FA917F700936107 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9F4F1D642FA917F800936107 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9F4F1D652FA917F800936107 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9F4F1D672FA917F800936107 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Sporta/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iti.Sporta;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9F4F1D682FA917F800936107 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Sporta/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iti.Sporta;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		9F4F1D6A2FA917F800936107 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iti.SportaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sporta.app/Sporta";
+			};
+			name = Debug;
+		};
+		9F4F1D6B2FA917F800936107 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iti.SportaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sporta.app/Sporta";
+			};
+			name = Release;
+		};
+		9F4F1D6D2FA917F800936107 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iti.SportaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Sporta;
+			};
+			name = Debug;
+		};
+		9F4F1D6E2FA917F800936107 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iti.SportaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Sporta;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9F4F1D342FA917EE00936107 /* Build configuration list for PBXProject "Sporta" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F4F1D642FA917F800936107 /* Debug */,
+				9F4F1D652FA917F800936107 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9F4F1D662FA917F800936107 /* Build configuration list for PBXNativeTarget "Sporta" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F4F1D672FA917F800936107 /* Debug */,
+				9F4F1D682FA917F800936107 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9F4F1D692FA917F800936107 /* Build configuration list for PBXNativeTarget "SportaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F4F1D6A2FA917F800936107 /* Debug */,
+				9F4F1D6B2FA917F800936107 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9F4F1D6C2FA917F800936107 /* Build configuration list for PBXNativeTarget "SportaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F4F1D6D2FA917F800936107 /* Debug */,
+				9F4F1D6E2FA917F800936107 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9F4F1D452FA917EE00936107 /* Sporta.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9F4F1D462FA917EE00936107 /* Sporta.xcdatamodel */,
+			);
+			currentVersion = 9F4F1D462FA917EE00936107 /* Sporta.xcdatamodel */;
+			path = Sporta.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 9F4F1D312FA917EE00936107 /* Project object */;
+}
