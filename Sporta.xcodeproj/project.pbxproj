@@ -17,6 +17,8 @@
 		9F4F1D572FA917F800936107 /* SportaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4F1D562FA917F800936107 /* SportaTests.swift */; };
 		9F4F1D612FA917F800936107 /* SportaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4F1D602FA917F800936107 /* SportaUITests.swift */; };
 		9F4F1D632FA917F800936107 /* SportaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4F1D622FA917F800936107 /* SportaUITestsLaunchTests.swift */; };
+		9F89D0FF2FAA60F000C01EFD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9F89D0FE2FAA60F000C01EFD /* Alamofire */; };
+		9F89D1022FAA6AFE00C01EFD /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 9F89D1012FAA6AFE00C01EFD /* SDWebImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F89D1022FAA6AFE00C01EFD /* SDWebImage in Frameworks */,
+				9F89D0FF2FAA60F000C01EFD /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +150,10 @@
 			dependencies = (
 			);
 			name = Sporta;
+			packageProductDependencies = (
+				9F89D0FE2FAA60F000C01EFD /* Alamofire */,
+				9F89D1012FAA6AFE00C01EFD /* SDWebImage */,
+			);
 			productName = Sporta;
 			productReference = 9F4F1D392FA917EE00936107 /* Sporta.app */;
 			productType = "com.apple.product-type.application";
@@ -218,6 +226,10 @@
 				Base,
 			);
 			mainGroup = 9F4F1D302FA917EE00936107;
+			packageReferences = (
+				9F89D0FD2FAA60F000C01EFD /* XCRemoteSwiftPackageReference "alamofire" */,
+				9F89D1002FAA6AFE00C01EFD /* XCRemoteSwiftPackageReference "sdwebimage" */,
+			);
 			productRefGroup = 9F4F1D3A2FA917EE00936107 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -604,6 +616,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9F89D0FD2FAA60F000C01EFD /* XCRemoteSwiftPackageReference "alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/alamofire/alamofire";
+			requirement = {
+				kind = exactVersion;
+				version = 5.4.4;
+			};
+		};
+		9F89D1002FAA6AFE00C01EFD /* XCRemoteSwiftPackageReference "sdwebimage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sdwebimage/sdwebimage";
+			requirement = {
+				kind = exactVersion;
+				version = 5.15.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9F89D0FE2FAA60F000C01EFD /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9F89D0FD2FAA60F000C01EFD /* XCRemoteSwiftPackageReference "alamofire" */;
+			productName = Alamofire;
+		};
+		9F89D1012FAA6AFE00C01EFD /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9F89D1002FAA6AFE00C01EFD /* XCRemoteSwiftPackageReference "sdwebimage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		9F4F1D452FA917EE00936107 /* Sporta.xcdatamodeld */ = {
