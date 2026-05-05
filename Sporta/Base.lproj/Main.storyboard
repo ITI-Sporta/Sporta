@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Favorites View Controller-->
         <scene sceneID="Dp8-HJ-y5f">
             <objects>
-                <viewController id="HDF-bq-10e" sceneMemberID="viewController">
+                <viewController id="HDF-bq-10e" customClass="FavoritesViewController" customModule="Sporta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="x9X-Up-Ekb">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,17 +21,17 @@
                     </view>
                     <navigationItem key="navigationItem" id="FHM-4H-wOD"/>
                     <connections>
-                        <segue destination="FKo-AB-3LH" kind="show" identifier="goToLeagueDetails" id="ewc-di-WK3"/>
+                        <segue destination="FKo-AB-3LH" kind="show" identifier="goToFixtures" id="ewc-di-WK3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UxA-Ju-vFh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1883" y="213"/>
         </scene>
-        <!--View Controller-->
+        <!--Sports View Controller-->
         <scene sceneID="UL8-oJ-XW9">
             <objects>
-                <viewController id="Bhw-zB-Vcu" sceneMemberID="viewController">
+                <viewController id="Bhw-zB-Vcu" customClass="SportsViewController" customModule="Sporta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0So-ff-spd">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -103,10 +103,10 @@
             </objects>
             <point key="canvasLocation" x="30" y="213"/>
         </scene>
-        <!--View Controller-->
+        <!--Leagues View Controller-->
         <scene sceneID="WlK-Ks-7aB">
             <objects>
-                <viewController id="KtM-fH-He0" sceneMemberID="viewController">
+                <viewController id="KtM-fH-He0" customClass="LeaguesViewController" customModule="Sporta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2HJ-ts-4mF">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -115,17 +115,17 @@
                     </view>
                     <navigationItem key="navigationItem" id="a2i-Zr-Sdx"/>
                     <connections>
-                        <segue destination="FKo-AB-3LH" kind="show" identifier="goToLeagueDetails" id="rng-Go-SiJ"/>
+                        <segue destination="FKo-AB-3LH" kind="show" identifier="goToFixtures" id="rng-Go-SiJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vej-VT-VJL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2813" y="-488"/>
         </scene>
-        <!--View Controller-->
+        <!--Fixtures View Controller-->
         <scene sceneID="kEe-lI-Sih">
             <objects>
-                <viewController id="FKo-AB-3LH" sceneMemberID="viewController">
+                <viewController id="FKo-AB-3LH" customClass="FixturesViewController" customModule="Sporta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wu9-kX-uzb">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -141,10 +141,10 @@
             </objects>
             <point key="canvasLocation" x="3906" y="-185"/>
         </scene>
-        <!--View Controller-->
+        <!--Team Details View Controller-->
         <scene sceneID="CTV-3T-eQD">
             <objects>
-                <viewController id="C7i-v0-aWQ" sceneMemberID="viewController">
+                <viewController id="C7i-v0-aWQ" customClass="TeamDetailsViewController" customModule="Sporta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9aq-KE-dhC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -157,10 +157,10 @@
             </objects>
             <point key="canvasLocation" x="4953" y="-185"/>
         </scene>
-        <!--View Controller-->
+        <!--Onboarding View Controller-->
         <scene sceneID="Xi4-RW-68I">
             <objects>
-                <viewController id="3u7-9R-OGs" sceneMemberID="viewController">
+                <viewController id="3u7-9R-OGs" customClass="OnboardingViewController" customModule="Sporta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="b2d-Bg-qCu">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -174,7 +174,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="rng-Go-SiJ"/>
+        <segue reference="ewc-di-WK3"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="figure.disc.sports" catalog="system" width="128" height="108"/>
