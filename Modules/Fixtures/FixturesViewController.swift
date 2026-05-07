@@ -9,6 +9,8 @@ import UIKit
 
 class FixturesViewController: UIViewController {
 
+    var currentLeague: League!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

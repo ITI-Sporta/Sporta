@@ -20,8 +20,11 @@ class SportsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = SportsPresenter(view: self)
-        navigationController?.setNavigationBarHidden(true, animated: false)
         setupCollectionView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     override func viewDidLayoutSubviews() {
@@ -136,11 +139,12 @@ extension SportsViewController: SportsViewProtocol {
 // MARK: - Navigation
 extension SportsViewController {
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "goToLeagues",
-//           let leaguesVC = segue.destination as? LeaguesViewController,
-//           let sport = sender as? Sport {
-//            leaguesVC.sport = sport
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToLeagues",
+        let leaguesVC = segue.destination as? LeaguesViewController,
+        let sport = sender as? Sport {
+            leaguesVC.sport = sport
+        
+        }
+    }
 }
