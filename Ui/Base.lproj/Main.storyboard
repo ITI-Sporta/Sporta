@@ -181,36 +181,49 @@
             </objects>
             <point key="canvasLocation" x="30" y="213"/>
         </scene>
-        <!--Leagues View Controller-->
+        <!--title-->
         <scene sceneID="WlK-Ks-7aB">
             <objects>
                 <viewController id="KtM-fH-He0" customClass="LeaguesViewController" customModule="Sporta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2HJ-ts-4mF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="347-EY-8FO">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="sGG-Z0-7Z6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="347-EY-8FO" firstAttribute="top" secondItem="sGG-Z0-7Z6" secondAttribute="top" id="GD6-nb-E6f"/>
+                            <constraint firstItem="347-EY-8FO" firstAttribute="leading" secondItem="sGG-Z0-7Z6" secondAttribute="leading" id="Rba-7S-aBs"/>
+                            <constraint firstItem="sGG-Z0-7Z6" firstAttribute="trailing" secondItem="347-EY-8FO" secondAttribute="trailing" id="Ufh-gF-pRd"/>
+                            <constraint firstItem="sGG-Z0-7Z6" firstAttribute="bottom" secondItem="347-EY-8FO" secondAttribute="bottom" id="WVd-6A-p1U"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="a2i-Zr-Sdx"/>
+                    <navigationItem key="navigationItem" title="title" id="a2i-Zr-Sdx">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="Iyj-sL-6OI"/>
+                    </navigationItem>
                     <connections>
-                        <segue destination="FKo-AB-3LH" kind="show" identifier="goToFixtures" id="rng-Go-SiJ"/>
+                        <outlet property="tableView" destination="347-EY-8FO" id="uXo-lp-alU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vej-VT-VJL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2813" y="-488"/>
         </scene>
-        <!--Fixtures View Controller-->
+        <!--Fixtures-->
         <scene sceneID="kEe-lI-Sih">
             <objects>
-                <viewController id="FKo-AB-3LH" customClass="FixturesViewController" customModule="Sporta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FixturesViewController" id="FKo-AB-3LH" customClass="FixturesViewController" customModule="Sporta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wu9-kX-uzb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="QmP-ag-zlc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="nT3-Hh-Viw"/>
+                    <navigationItem key="navigationItem" title="Fixtures" id="nT3-Hh-Viw"/>
                     <connections>
                         <segue destination="C7i-v0-aWQ" kind="show" identifier="goToTeamDetails" id="ASf-kM-QpA"/>
                     </connections>
@@ -251,9 +264,6 @@
             <point key="canvasLocation" x="-1810" y="-185"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="ewc-di-WK3"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>

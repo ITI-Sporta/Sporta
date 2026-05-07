@@ -1,5 +1,5 @@
 //
-//  FavoritesViewController.swift
+//  FixturesViewController.swift
 //  Sporta
 //
 //  Created by Mohamed Ayman on 05/05/2026.
@@ -7,8 +7,10 @@
 
 import UIKit
 
-class FavoritesViewController: UIViewController {
+class FixturesViewController: UIViewController {
 
+    var currentLeague: League!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
