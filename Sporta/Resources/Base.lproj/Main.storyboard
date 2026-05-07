@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lYm-NE-avb">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lYm-NE-avb">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,7 +13,7 @@
             <objects>
                 <viewController id="HDF-bq-10e" customClass="FavoritesViewController" customModule="Sporta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="x9X-Up-Ekb">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="lHH-xU-2sk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -33,27 +32,27 @@
             <objects>
                 <viewController storyboardIdentifier="sportsVC" id="Bhw-zB-Vcu" customClass="SportsViewController" customModule="Sporta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0So-ff-spd">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1A-vW-XYZ">
-                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C0N-T-VwG" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="709.66666666666663"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="709.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V2L-pH-Xr2" userLabel="Logo Header View">
-                                                <rect key="frame" x="16" y="16" width="361" height="153.66666666666666"/>
+                                                <rect key="frame" x="16" y="16" width="382" height="153.5"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_icon" translatesAutoresizingMaskIntoConstraints="NO" id="ccX-z5-cbC">
-                                                        <rect key="frame" x="132.66666666666666" y="8" width="96" height="96"/>
+                                                        <rect key="frame" x="143" y="8" width="96" height="96"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="96" id="Mzn-nJ-Y4F"/>
                                                             <constraint firstAttribute="width" constant="96" id="amT-Ww-pQ5"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sporta" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O4G-Xf-j9m">
-                                                        <rect key="frame" x="136.33333333333334" y="112.00000000000001" width="88.666666666666657" height="33.666666666666671"/>
+                                                        <rect key="frame" x="146.5" y="112" width="89" height="33.5"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -69,7 +68,7 @@
                                                 </constraints>
                                             </view>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wGW-HM-S3q">
-                                                <rect key="frame" x="0.0" y="169.66666666666669" width="393" height="540"/>
+                                                <rect key="frame" x="0.0" y="169.5" width="414" height="540"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="540" id="fixedHeightConstraint"/>
                                                 </constraints>
@@ -148,10 +147,10 @@
         <scene sceneID="3f5-Ea-ZmP">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8mU-mO-bMv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Sports" image="figure.disc.sports" catalog="system" id="0Oy-oJ-M6P"/>
+                    <tabBarItem key="tabBarItem" title="Sports" image="sportscourt" catalog="system" selectedImage="sportscourt.fill" id="0Oy-oJ-M6P"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WdG-YB-CjZ">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -167,10 +166,10 @@
         <scene sceneID="uEv-Gw-HRw">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8Qk-aY-YNo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favorites" image="heart.fill" catalog="system" id="4DQ-vI-hd4"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="heart" catalog="system" selectedImage="heart.fill" id="4DQ-vI-hd4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="63M-Wv-I8g">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -187,7 +186,7 @@
             <objects>
                 <viewController id="KtM-fH-He0" customClass="LeaguesViewController" customModule="Sporta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2HJ-ts-4mF">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="sGG-Z0-7Z6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -206,7 +205,7 @@
             <objects>
                 <viewController id="FKo-AB-3LH" customClass="FixturesViewController" customModule="Sporta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wu9-kX-uzb">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="QmP-ag-zlc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -225,7 +224,7 @@
             <objects>
                 <viewController id="C7i-v0-aWQ" customClass="TeamDetailsViewController" customModule="Sporta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9aq-KE-dhC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="GhC-VH-D5R"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -241,7 +240,7 @@
             <objects>
                 <viewController id="3u7-9R-OGs" customClass="OnboardingViewController" customModule="Sporta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="b2d-Bg-qCu">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="8xU-4o-6RP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -256,9 +255,11 @@
         <segue reference="ewc-di-WK3"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="figure.disc.sports" catalog="system" width="128" height="108"/>
-        <image name="heart.fill" catalog="system" width="128" height="107"/>
+        <image name="heart" catalog="system" width="128" height="109"/>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="logo_icon" width="1024" height="932"/>
+        <image name="sportscourt" catalog="system" width="128" height="84"/>
+        <image name="sportscourt.fill" catalog="system" width="128" height="84"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
