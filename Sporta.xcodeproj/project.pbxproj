@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		9F4F1D3D2FA917EE00936107 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4F1D3C2FA917EE00936107 /* AppDelegate.swift */; };
 		9F4F1D3F2FA917EE00936107 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4F1D3E2FA917EE00936107 /* SceneDelegate.swift */; };
-		9F4F1D412FA917EE00936107 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4F1D402FA917EE00936107 /* ViewController.swift */; };
 		9F4F1D442FA917EE00936107 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F4F1D422FA917EE00936107 /* Main.storyboard */; };
 		9F4F1D472FA917EE00936107 /* Sporta.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9F4F1D452FA917EE00936107 /* Sporta.xcdatamodeld */; };
 		9F4F1D492FA917F700936107 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F4F1D482FA917F700936107 /* Assets.xcassets */; };
@@ -57,7 +56,6 @@
 		9F4F1D392FA917EE00936107 /* Sporta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sporta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F4F1D3C2FA917EE00936107 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F4F1D3E2FA917EE00936107 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9F4F1D402FA917EE00936107 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9F4F1D432FA917EE00936107 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9F4F1D462FA917EE00936107 /* Sporta.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Sporta.xcdatamodel; sourceTree = "<group>"; };
 		9F4F1D482FA917F700936107 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -115,6 +113,7 @@
 		9F4F1D302FA917EE00936107 = {
 			isa = PBXGroup;
 			children = (
+				9F4F1D452FA917EE00936107 /* Sporta.xcdatamodeld */,
 				9F4F1D3B2FA917EE00936107 /* Sporta */,
 				9F4F1D552FA917F700936107 /* SportaTests */,
 				9F4F1D5F2FA917F800936107 /* SportaUITests */,
@@ -136,20 +135,10 @@
 			isa = PBXGroup;
 			children = (
 				9F89D1032FAA770600C01EFD /* Core */,
-				9F4F1D3C2FA917EE00936107 /* AppDelegate.swift */,
-				9F4F1D3E2FA917EE00936107 /* SceneDelegate.swift */,
-				9F4F1D402FA917EE00936107 /* ViewController.swift */,
-				9F4F1D422FA917EE00936107 /* Main.storyboard */,
-				9F4F1D482FA917F700936107 /* Assets.xcassets */,
-				9F4F1D4A2FA917F700936107 /* LaunchScreen.storyboard */,
+				D9C26C682FAC9E0E00FF489B /* App */,
+				D9C26C6A2FAC9E3800FF489B /* Modules */,
+				D9C26C692FAC9E1A00FF489B /* Resources */,
 				9F4F1D4D2FA917F700936107 /* Info.plist */,
-				9F4F1D452FA917EE00936107 /* Sporta.xcdatamodeld */,
-				D9B11C782FAA8F1900E7F85B /* OnboardingViewController.swift */,
-				D9B11C7A2FAA8FC000E7F85B /* SportsViewController.swift */,
-				D9B11C7C2FAA8FE100E7F85B /* FavoritesViewController.swift */,
-				D9B11C7E2FAA900200E7F85B /* LeaguesViewController.swift */,
-				D9B11C802FAA906F00E7F85B /* FixturesViewController.swift */,
-				D9B11C822FAA90E600E7F85B /* TeamDetailsViewController.swift */,
 			);
 			path = Sporta;
 			sourceTree = "<group>";
@@ -201,6 +190,86 @@
 				9FDA80C62FAB4CB400599462 /* H2HResult.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		D9C26C682FAC9E0E00FF489B /* App */ = {
+			isa = PBXGroup;
+			children = (
+				9F4F1D3C2FA917EE00936107 /* AppDelegate.swift */,
+				9F4F1D3E2FA917EE00936107 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		D9C26C692FAC9E1A00FF489B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9F4F1D422FA917EE00936107 /* Main.storyboard */,
+				9F4F1D4A2FA917F700936107 /* LaunchScreen.storyboard */,
+				9F4F1D482FA917F700936107 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D9C26C6A2FAC9E3800FF489B /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				D9C26C702FAC9F3300FF489B /* Onboarding */,
+				D9C26C6F2FAC9F2900FF489B /* Sports */,
+				D9C26C6E2FAC9F1B00FF489B /* Favorites */,
+				D9C26C6D2FAC9F1200FF489B /* Leagues */,
+				D9C26C6C2FAC9F0200FF489B /* Fixtures */,
+				D9C26C6B2FAC9E4500FF489B /* TeamDetails */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		D9C26C6B2FAC9E4500FF489B /* TeamDetails */ = {
+			isa = PBXGroup;
+			children = (
+				D9B11C822FAA90E600E7F85B /* TeamDetailsViewController.swift */,
+			);
+			path = TeamDetails;
+			sourceTree = "<group>";
+		};
+		D9C26C6C2FAC9F0200FF489B /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				D9B11C802FAA906F00E7F85B /* FixturesViewController.swift */,
+			);
+			path = Fixtures;
+			sourceTree = "<group>";
+		};
+		D9C26C6D2FAC9F1200FF489B /* Leagues */ = {
+			isa = PBXGroup;
+			children = (
+				D9B11C7E2FAA900200E7F85B /* LeaguesViewController.swift */,
+			);
+			path = Leagues;
+			sourceTree = "<group>";
+		};
+		D9C26C6E2FAC9F1B00FF489B /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				D9B11C7C2FAA8FE100E7F85B /* FavoritesViewController.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		D9C26C6F2FAC9F2900FF489B /* Sports */ = {
+			isa = PBXGroup;
+			children = (
+				D9B11C7A2FAA8FC000E7F85B /* SportsViewController.swift */,
+			);
+			path = Sports;
+			sourceTree = "<group>";
+		};
+		D9C26C702FAC9F3300FF489B /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				D9B11C782FAA8F1900E7F85B /* OnboardingViewController.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -346,7 +415,6 @@
 				9FDA80BD2FAAF55400599462 /* Sport.swift in Sources */,
 				9F4F1D472FA917EE00936107 /* Sporta.xcdatamodeld in Sources */,
 				9FDA80BF2FAB475900599462 /* League.swift in Sources */,
-				9F4F1D412FA917EE00936107 /* ViewController.swift in Sources */,
 				9F89D1072FAA794000C01EFD /* ApiManager.swift in Sources */,
 				9FDA80C92FAB523600599462 /* ApiManagerImp.swift in Sources */,
 				9FDA80C12FAB478E00599462 /* Fixture.swift in Sources */,
