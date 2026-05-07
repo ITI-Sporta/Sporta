@@ -124,7 +124,12 @@
 			isa = PBXGroup;
 			children = (
 				9F4F1D452FA917EE00936107 /* Sporta.xcdatamodeld */,
-				9F4F1D3B2FA917EE00936107 /* Sporta */,
+				9F4F1D4D2FA917F700936107 /* Info.plist */,
+				9F4F1D3C2FA917EE00936107 /* AppDelegate.swift */,
+				9F4F1D3E2FA917EE00936107 /* SceneDelegate.swift */,
+				9F89D1032FAA770600C01EFD /* Core */,
+				D9C26C642FAC837B00FF489B /* Ui */,
+				D9B5789B2FABDD0700630E43 /* Modules */,
 				9F4F1D552FA917F700936107 /* SportaTests */,
 				9F4F1D5F2FA917F800936107 /* SportaUITests */,
 				9F4F1D3A2FA917EE00936107 /* Products */,
@@ -139,18 +144,6 @@
 				9F4F1D5C2FA917F800936107 /* SportaUITests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		9F4F1D3B2FA917EE00936107 /* Sporta */ = {
-			isa = PBXGroup;
-			children = (
-				9F4F1D4D2FA917F700936107 /* Info.plist */,
-				D9B578A22FABDF6B00630E43 /* App */,
-				9F89D1032FAA770600C01EFD /* Core */,
-				D9B5789B2FABDD0700630E43 /* Modules */,
-				D9C26C642FAC837B00FF489B /* Resources */,
-			);
-			path = Sporta;
 			sourceTree = "<group>";
 		};
 		9F4F1D552FA917F700936107 /* SportaTests */ = {
@@ -266,23 +259,14 @@
 			path = Favorites;
 			sourceTree = "<group>";
 		};
-		D9B578A22FABDF6B00630E43 /* App */ = {
+		D9C26C642FAC837B00FF489B /* Ui */ = {
 			isa = PBXGroup;
 			children = (
-				9F4F1D3C2FA917EE00936107 /* AppDelegate.swift */,
-				9F4F1D3E2FA917EE00936107 /* SceneDelegate.swift */,
-			);
-			path = App;
-			sourceTree = "<group>";
-		};
-		D9C26C642FAC837B00FF489B /* Resources */ = {
-			isa = PBXGroup;
-			children = (
+				9F4F1D482FA917F700936107 /* Assets.xcassets */,
 				9F4F1D422FA917EE00936107 /* Main.storyboard */,
 				9F4F1D4A2FA917F700936107 /* LaunchScreen.storyboard */,
-				9F4F1D482FA917F700936107 /* Assets.xcassets */,
 			);
-			path = Resources;
+			path = Ui;
 			sourceTree = "<group>";
 		};
 		D9C26C652FAC93BF00FF489B /* MainTabBar */ = {
@@ -661,7 +645,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Sporta/Info.plist;
+				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -689,7 +673,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Sporta/Info.plist;
+				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
