@@ -9,15 +9,17 @@ import UIKit
 
 class SportsViewController: UIViewController {
     
+    // MARK: - Outlets
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var logoImage: UIImageView!
-   
-    // MARK: - Data
-    private let sports: [Sport] = Sport.allCases
+    
+    // MARK: - Presenter
+    var presenter: SportsPresenterProtocol!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter = SportsPresenter(view: self)
         navigationController?.setNavigationBarHidden(true, animated: false)
         setupCollectionView()
     }
@@ -27,11 +29,20 @@ class SportsViewController: UIViewController {
         collectionView.collectionViewLayout = createLayout()
     }
     
+    override func viewWillTransition(to size: CGSize,
+                                     with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate { _ in
+            self.collectionView.collectionViewLayout = self.createLayout()
+            self.updateScrolling()
+        }
+    }
+    
     // MARK: - Setup
     private func setupCollectionView() {
         let nib = UINib(nibName: "SportCell", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: "SportCell")
-        collectionView.delegate = self
+        collectionView.delegate   = self
         collectionView.dataSource = self
         collectionView.isScrollEnabled = false
         collectionView.showsVerticalScrollIndicator = false
@@ -40,15 +51,13 @@ class SportsViewController: UIViewController {
     
     // MARK: - Layout
     private func createLayout() -> UICollectionViewLayout {
-        let outerInset: CGFloat  = 16
-        let itemSpacing: CGFloat = 8
-        let minimumRowHeight: CGFloat = 240
+        let outerInset: CGFloat       = 16
+        let itemSpacing: CGFloat      = 8
+        let minimumRowHeight: CGFloat = 120
         
-        let totalHeight     = collectionView.bounds.height
-        let availableHeight = totalHeight - (outerInset * 2)
-        let calculatedRowHeight = availableHeight / 2
-        
-        let rowHeight = max(calculatedRowHeight, minimumRowHeight)
+        let availableHeight  = collectionView.bounds.height - (outerInset * 2)
+        let calculatedHeight = availableHeight / 2
+        let rowHeight        = max(calculatedHeight, minimumRowHeight)
         
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(0.5),
@@ -78,6 +87,13 @@ class SportsViewController: UIViewController {
         return UICollectionViewCompositionalLayout(section: section)
     }
     
+    private func updateScrolling() {
+        let outerInset: CGFloat       = 16
+        let minimumRowHeight: CGFloat = 120
+        let availableHeight           = collectionView.bounds.height - (outerInset * 2)
+        let calculatedHeight          = availableHeight / 2
+        collectionView.isScrollEnabled = calculatedHeight < minimumRowHeight
+    }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -85,7 +101,7 @@ extension SportsViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        sports.count
+        presenter.numberOfSports
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -94,7 +110,7 @@ extension SportsViewController: UICollectionViewDataSource {
             withReuseIdentifier: "SportCell",
             for: indexPath
         ) as! SportCell
-        cell.configure(with: sports[indexPath.item])
+        cell.configure(with: presenter.sport(at: indexPath.item))
         return cell
     }
 }
@@ -105,7 +121,15 @@ extension SportsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        performSegue(withIdentifier: "goToLeagues", sender: sports[indexPath.item])
+        presenter.didSelectSport(at: indexPath.item)
+    }
+}
+
+// MARK: - SportsViewProtocol
+extension SportsViewController: SportsViewProtocol {
+    
+    func navigateToLeagues(with sport: Sport) {
+        performSegue(withIdentifier: "goToLeagues", sender: sport)
     }
 }
 
