@@ -36,7 +36,7 @@
 		D9B11C7B2FAA8FC000E7F85B /* SportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B11C7A2FAA8FC000E7F85B /* SportsViewController.swift */; };
 		D9B11C7D2FAA8FE100E7F85B /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B11C7C2FAA8FE100E7F85B /* FavoritesViewController.swift */; };
 		D9B11C7F2FAA900200E7F85B /* LeaguesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B11C7E2FAA900200E7F85B /* LeaguesViewController.swift */; };
-		D9B11C812FAA906F00E7F85B /* FixturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B11C802FAA906F00E7F85B /* FixturesViewController.swift */; };
+		D9B11C812FAA906F00E7F85B /* LeagueDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B11C802FAA906F00E7F85B /* LeagueDetailsViewController.swift */; };
 		D9B11C832FAA90E600E7F85B /* TeamDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B11C822FAA90E600E7F85B /* TeamDetailsViewController.swift */; };
 		D9B578A52FABE51500630E43 /* SportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B578A32FABE51500630E43 /* SportCell.swift */; };
 		D9B578A62FABE51500630E43 /* SportCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9B578A42FABE51500630E43 /* SportCell.xib */; };
@@ -94,7 +94,7 @@
 		D9B11C7A2FAA8FC000E7F85B /* SportsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsViewController.swift; sourceTree = "<group>"; };
 		D9B11C7C2FAA8FE100E7F85B /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		D9B11C7E2FAA900200E7F85B /* LeaguesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguesViewController.swift; sourceTree = "<group>"; };
-		D9B11C802FAA906F00E7F85B /* FixturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixturesViewController.swift; sourceTree = "<group>"; };
+		D9B11C802FAA906F00E7F85B /* LeagueDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueDetailsViewController.swift; sourceTree = "<group>"; };
 		D9B11C822FAA90E600E7F85B /* TeamDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailsViewController.swift; sourceTree = "<group>"; };
 		D9B578A32FABE51500630E43 /* SportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportCell.swift; sourceTree = "<group>"; };
 		D9B578A42FABE51500630E43 /* SportCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SportCell.xib; sourceTree = "<group>"; };
@@ -285,7 +285,9 @@
 		D9B5789F2FABDD6000630E43 /* Fixtures */ = {
 			isa = PBXGroup;
 			children = (
-				D9B11C802FAA906F00E7F85B /* FixturesViewController.swift */,
+				D9E15BC72FADD83400F6F9AB /* Contract */,
+				D9E15BC62FADD82500F6F9AB /* Presenter */,
+				D9E15BC52FADD81000F6F9AB /* View */,
 			);
 			path = Fixtures;
 			sourceTree = "<group>";
@@ -346,6 +348,28 @@
 			isa = PBXGroup;
 			children = (
 				D9C26C712FACA1EB00FF489B /* SportsContract.swift */,
+			);
+			path = Contract;
+			sourceTree = "<group>";
+		};
+		D9E15BC52FADD81000F6F9AB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D9B11C802FAA906F00E7F85B /* LeagueDetailsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D9E15BC62FADD82500F6F9AB /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		D9E15BC72FADD83400F6F9AB /* Contract */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = Contract;
 			sourceTree = "<group>";
@@ -509,7 +533,7 @@
 				D9B11C7D2FAA8FE100E7F85B /* FavoritesViewController.swift in Sources */,
 				D9B11C7F2FAA900200E7F85B /* LeaguesViewController.swift in Sources */,
 				D9B11C792FAA8F1900E7F85B /* OnboardingViewController.swift in Sources */,
-				D9B11C812FAA906F00E7F85B /* FixturesViewController.swift in Sources */,
+				D9B11C812FAA906F00E7F85B /* LeagueDetailsViewController.swift in Sources */,
 				D9B11C7B2FAA8FC000E7F85B /* SportsViewController.swift in Sources */,
 				D9C26C672FAC943A00FF489B /* MainTabBarController.swift in Sources */,
 				9F2699F22FAD379E00765B5A /* LeaguesPresenter.swift in Sources */,
