@@ -55,7 +55,7 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="2 - 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="scoreLabel">
-                                        <rect key="frame" x="107" y="29.333333333333332" width="99" height="25.333333333333339"/>
+                                        <rect key="frame" x="107" y="29.333333333333329" width="99" height="25.333333333333343"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" weight="black" pointSize="21"/>
                                         <color key="textColor" red="0.078431372550000003" green="0.15686274510000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -116,10 +116,12 @@
             <connections>
                 <outlet property="awayLogo" destination="awayLogo" id="out1"/>
                 <outlet property="awayName" destination="awayName" id="out2"/>
+                <outlet property="awayTeamContainer" destination="awayStack" id="gLw-st-OtR"/>
                 <outlet property="cardView" destination="cardView" id="Std-do-rJa"/>
                 <outlet property="footerLabel" destination="footerLabel" id="out3"/>
                 <outlet property="homeLogo" destination="homeLogo" id="out4"/>
                 <outlet property="homeName" destination="homeName" id="out5"/>
+                <outlet property="homeTeamContainer" destination="homeStack" id="nvf-hI-CUe"/>
                 <outlet property="leagueLabel" destination="leagueLabel" id="out6"/>
                 <outlet property="scoreLabel" destination="scoreLabel" id="out7"/>
                 <outlet property="statusLabel" destination="statusLabel" id="out8"/>

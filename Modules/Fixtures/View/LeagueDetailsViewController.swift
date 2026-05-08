@@ -84,10 +84,16 @@ class LeagueDetailsViewController: UIViewController {
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
         presenter.didChangeSegment(to: sender.selectedSegmentIndex)
     }
+    
 }
 
 // MARK: - UITableViewDataSource
 extension LeagueDetailsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView,
+                   didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
@@ -104,6 +110,7 @@ extension LeagueDetailsViewController: UITableViewDataSource {
             at: indexPath.row,
             for: segmentControl.selectedSegmentIndex
         )
+        cell.delegate = self
         cell.configure(with: fixture)
         return cell
     }
@@ -150,6 +157,7 @@ extension LeagueDetailsViewController: UITableViewDelegate {
                    estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         120
     }
+    
 }
 
 // MARK: - LeagueDetailsViewProtocol
@@ -193,5 +201,47 @@ extension LeagueDetailsViewController: LeagueDetailsViewProtocol {
             alert.addAction(UIAlertAction(title: "OK", style: .cancel))
             self.present(alert, animated: true)
         }
+    }
+}
+
+extension LeagueDetailsViewController: MatchCellDelegate {
+
+    func didTapHomeTeam(in cell: MatchCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+
+        let fixture = presenter.fixture(
+            at: indexPath.row,
+            for: segmentControl.selectedSegmentIndex
+        )
+
+        let teamName = fixture.homeTeamName ?? ""
+
+        navigateToTeamDetails(teamName: teamName)
+    }
+
+    func didTapAwayTeam(in cell: MatchCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+
+        let fixture = presenter.fixture(
+            at: indexPath.row,
+            for: segmentControl.selectedSegmentIndex
+        )
+
+        let teamName = fixture.awayTeamName ?? ""
+
+        navigateToTeamDetails(teamName: teamName)
+    }
+    
+    private func navigateToTeamDetails(teamName: String) {
+
+        guard let vc = storyboard?.instantiateViewController(
+            withIdentifier: "TeamDetailsViewController"
+        ) as? TeamDetailsViewController else {
+            return
+        }
+
+        vc.teamName = teamName
+
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

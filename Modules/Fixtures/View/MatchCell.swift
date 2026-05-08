@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol MatchCellDelegate: AnyObject {
+    func didTapHomeTeam(in cell: MatchCell)
+    func didTapAwayTeam(in cell: MatchCell)
+}
+
 class MatchCell: UITableViewCell {
     
     // MARK: - Outlets
@@ -19,11 +24,16 @@ class MatchCell: UITableViewCell {
     @IBOutlet weak var awayLogo: UIImageView!
     @IBOutlet weak var awayName: UILabel!
     @IBOutlet weak var footerLabel: UILabel!
+    @IBOutlet weak var awayTeamContainer: UIStackView!
+    @IBOutlet weak var homeTeamContainer: UIStackView!
+    
+    weak var delegate: MatchCellDelegate?
     
     // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCardStyle()
+        setupGestures();
     }
     
     // MARK: - Setup
@@ -35,6 +45,23 @@ class MatchCell: UITableViewCell {
         cardView.layer.shadowRadius = 4
         cardView.layer.masksToBounds = false
         contentView.backgroundColor = .clear
+    }
+    
+    private func setupGestures() {
+
+        let homeTap = UITapGestureRecognizer(
+            target: self,
+            action: #selector(didTapHome)
+        )
+        homeTeamContainer.isUserInteractionEnabled = true
+        homeTeamContainer.addGestureRecognizer(homeTap)
+
+        let awayTap = UITapGestureRecognizer(
+            target: self,
+            action: #selector(didTapAway)
+        )
+        awayTeamContainer.isUserInteractionEnabled = true
+        awayTeamContainer.addGestureRecognizer(awayTap)
     }
     
     // MARK: - Reuse
@@ -73,5 +100,13 @@ class MatchCell: UITableViewCell {
         
         homeLogo.setImage(fixture.homeTeamLogo ?? "")
         awayLogo.setImage(fixture.awayTeamLogo ?? "")
+    }
+    
+    @objc private func didTapHome() {
+        delegate?.didTapHomeTeam(in: self)
+    }
+
+    @objc private func didTapAway() {
+        delegate?.didTapAwayTeam(in: self)
     }
 }
