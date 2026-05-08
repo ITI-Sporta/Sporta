@@ -116,6 +116,7 @@ extension LeaguesViewController: UITableViewDelegate, UITableViewDataSource {
         }
 
         vc.currentLeague = selectedLeague
+        vc.sport = sport
 
         navigationController?.pushViewController(vc, animated: true)
     }
