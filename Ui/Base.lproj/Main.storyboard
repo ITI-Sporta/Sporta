@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lYm-NE-avb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lYm-NE-avb">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -36,7 +37,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1A-vW-XYZ">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C0N-T-VwG" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="709.5"/>
@@ -150,7 +151,7 @@
                     <tabBarItem key="tabBarItem" title="Sports" image="sportscourt" catalog="system" selectedImage="sportscourt.fill" id="0Oy-oJ-M6P"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WdG-YB-CjZ">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -169,7 +170,7 @@
                     <tabBarItem key="tabBarItem" title="Favorites" image="heart" catalog="system" selectedImage="heart.fill" id="4DQ-vI-hd4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="63M-Wv-I8g">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -190,7 +191,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="347-EY-8FO">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sGG-Z0-7Z6"/>
@@ -207,35 +208,111 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="347-EY-8FO" id="uXo-lp-alU"/>
+                        <segue destination="FKo-AB-3LH" kind="show" identifier="goToFixtures" id="Qv9-YR-R9c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vej-VT-VJL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2813" y="-488"/>
+            <point key="canvasLocation" x="2819" y="-488"/>
         </scene>
-        <!--Fixtures-->
+        <!--League Details-->
         <scene sceneID="kEe-lI-Sih">
             <objects>
-                <viewController storyboardIdentifier="FixturesViewController" id="FKo-AB-3LH" customClass="FixturesViewController" customModule="Sporta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LeagueDetailsViewController" id="FKo-AB-3LH" customClass="LeagueDetailsViewController" customModule="Sporta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wu9-kX-uzb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="headerCard" userLabel="HeaderView">
+                                <rect key="frame" x="16" y="115" width="382" height="120"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LeagueImageView">
+                                        <rect key="frame" x="16" y="20" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="h1"/>
+                                            <constraint firstAttribute="width" constant="80" id="w1"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="League Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LeagueNameLabel">
+                                        <rect key="frame" x="112" y="32" width="254" height="26.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                        <color key="textColor" red="0.078431372550000003" green="0.15686274510000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country | Season" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CountrySeasonLabel">
+                                        <rect key="frame" x="112" y="62.5" width="127" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="LeagueImageView" firstAttribute="centerY" secondItem="headerCard" secondAttribute="centerY" id="c1"/>
+                                    <constraint firstAttribute="height" constant="120" id="hHeader"/>
+                                    <constraint firstItem="LeagueImageView" firstAttribute="leading" secondItem="headerCard" secondAttribute="leading" constant="16" id="l1"/>
+                                    <constraint firstItem="LeagueNameLabel" firstAttribute="leading" secondItem="LeagueImageView" secondAttribute="trailing" constant="16" id="l2"/>
+                                    <constraint firstItem="CountrySeasonLabel" firstAttribute="leading" secondItem="LeagueNameLabel" secondAttribute="leading" id="l3"/>
+                                    <constraint firstAttribute="trailing" secondItem="LeagueNameLabel" secondAttribute="trailing" constant="16" id="r1"/>
+                                    <constraint firstItem="LeagueNameLabel" firstAttribute="top" secondItem="headerCard" secondAttribute="top" constant="32" id="t1"/>
+                                    <constraint firstItem="CountrySeasonLabel" firstAttribute="top" secondItem="LeagueNameLabel" secondAttribute="bottom" constant="4" id="t2"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="FixturesStandingsSegment">
+                                <rect key="frame" x="16" y="251" width="382" height="32"/>
+                                <segments>
+                                    <segment title="Upcoming"/>
+                                    <segment title="Results"/>
+                                    <segment title="Live"/>
+                                </segments>
+                                <color key="selectedSegmentTintColor" red="1" green="0.4941176471" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="segmentChanged:" destination="FKo-AB-3LH" eventType="valueChanged" id="NUX-2I-Gy4"/>
+                                </connections>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mainTableView">
+                                <rect key="frame" x="0.0" y="298" width="414" height="515"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="QmP-ag-zlc"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="headerCard" firstAttribute="leading" secondItem="QmP-ag-zlc" secondAttribute="leading" constant="16" id="cHeaderLead"/>
+                            <constraint firstItem="headerCard" firstAttribute="top" secondItem="QmP-ag-zlc" secondAttribute="top" constant="23" id="cHeaderTop"/>
+                            <constraint firstItem="QmP-ag-zlc" firstAttribute="trailing" secondItem="headerCard" secondAttribute="trailing" constant="16" id="cHeaderTrail"/>
+                            <constraint firstItem="FixturesStandingsSegment" firstAttribute="leading" secondItem="headerCard" secondAttribute="leading" id="cSegmentLead"/>
+                            <constraint firstItem="FixturesStandingsSegment" firstAttribute="top" secondItem="headerCard" secondAttribute="bottom" constant="16" id="cSegmentTop"/>
+                            <constraint firstItem="FixturesStandingsSegment" firstAttribute="trailing" secondItem="headerCard" secondAttribute="trailing" id="cSegmentTrail"/>
+                            <constraint firstItem="mainTableView" firstAttribute="bottom" secondItem="QmP-ag-zlc" secondAttribute="bottom" id="cTableBottom"/>
+                            <constraint firstItem="mainTableView" firstAttribute="leading" secondItem="QmP-ag-zlc" secondAttribute="leading" id="cTableLead"/>
+                            <constraint firstItem="mainTableView" firstAttribute="top" secondItem="FixturesStandingsSegment" secondAttribute="bottom" constant="16" id="cTableTop"/>
+                            <constraint firstItem="mainTableView" firstAttribute="trailing" secondItem="QmP-ag-zlc" secondAttribute="trailing" id="cTableTrail"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Fixtures" id="nT3-Hh-Viw"/>
+                    <navigationItem key="navigationItem" title="League Details" id="nT3-Hh-Viw"/>
                     <connections>
-                        <segue destination="C7i-v0-aWQ" kind="show" identifier="goToTeamDetails" id="ASf-kM-QpA"/>
+                        <outlet property="countrySeasonLabel" destination="CountrySeasonLabel" id="detailsOutlet"/>
+                        <outlet property="leagueImageView" destination="LeagueImageView" id="imgOutlet"/>
+                        <outlet property="leagueNameLabel" destination="LeagueNameLabel" id="nameOutlet"/>
+                        <outlet property="segmentControl" destination="FixturesStandingsSegment" id="segmentOutlet"/>
+                        <outlet property="tableView" destination="mainTableView" id="tableOutlet"/>
+                        <segue destination="C7i-v0-aWQ" kind="show" identifier="goToTeamDetails" id="HEy-Iu-HZH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EBj-z6-39s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3906" y="-185"/>
+            <point key="canvasLocation" x="3907" y="-185"/>
         </scene>
         <!--Team Details View Controller-->
         <scene sceneID="CTV-3T-eQD">
             <objects>
-                <viewController id="C7i-v0-aWQ" customClass="TeamDetailsViewController" customModule="Sporta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TeamDetailsViewController" id="C7i-v0-aWQ" customClass="TeamDetailsViewController" customModule="Sporta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9aq-KE-dhC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -246,7 +323,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cvs-1G-Ouz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4953" y="-185"/>
+            <point key="canvasLocation" x="4913" y="-184"/>
         </scene>
         <!--Onboarding View Controller-->
         <scene sceneID="Xi4-RW-68I">
@@ -264,12 +341,18 @@
             <point key="canvasLocation" x="-1810" y="-185"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Qv9-YR-R9c"/>
+    </inferredMetricsTieBreakers>
     <resources>
-        <image name="heart" catalog="system" width="128" height="109"/>
-        <image name="heart.fill" catalog="system" width="128" height="109"/>
+        <image name="heart" catalog="system" width="128" height="107"/>
+        <image name="heart.fill" catalog="system" width="128" height="107"/>
         <image name="logo_icon" width="1024" height="932"/>
-        <image name="sportscourt" catalog="system" width="128" height="84"/>
-        <image name="sportscourt.fill" catalog="system" width="128" height="84"/>
+        <image name="sportscourt" catalog="system" width="128" height="83"/>
+        <image name="sportscourt.fill" catalog="system" width="128" height="83"/>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

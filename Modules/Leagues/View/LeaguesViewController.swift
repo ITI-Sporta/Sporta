@@ -110,12 +110,13 @@ extension LeaguesViewController: UITableViewDelegate, UITableViewDataSource {
         let selectedLeague = presenter.getLeague(at: indexPath.row)
 
         guard let vc = storyboard?.instantiateViewController(
-            withIdentifier: "FixturesViewController"
-        ) as? FixturesViewController else {
+            withIdentifier: "LeagueDetailsViewController"
+        ) as? LeagueDetailsViewController else {
             return
         }
 
         vc.currentLeague = selectedLeague
+        vc.sport = sport
 
         navigationController?.pushViewController(vc, animated: true)
     }

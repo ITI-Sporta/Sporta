@@ -143,8 +143,8 @@ extension SportsViewController {
         if segue.identifier == "goToLeagues",
         let leaguesVC = segue.destination as? LeaguesViewController,
         let sport = sender as? Sport {
+            leaguesVC.hidesBottomBarWhenPushed = true
             leaguesVC.sport = sport
-        
         }
     }
 }
