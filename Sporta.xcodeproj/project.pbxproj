@@ -47,6 +47,8 @@
 		D9E15BCB2FADDE3A00F6F9AB /* MatchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9E15BC92FADDE3A00F6F9AB /* MatchCell.xib */; };
 		D9E15BCD2FADE32800F6F9AB /* LeagueDetailsContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E15BCC2FADE32800F6F9AB /* LeagueDetailsContract.swift */; };
 		D9E15BCF2FADE3CD00F6F9AB /* LeagueDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E15BCE2FADE3CD00F6F9AB /* LeagueDetailsPresenter.swift */; };
+		D9F2D4DB2FAF6D8400DAF182 /* TeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F2D4D92FAF6D8400DAF182 /* TeamCell.swift */; };
+		D9F2D4DC2FAF6D8400DAF182 /* TeamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9F2D4DA2FAF6D8400DAF182 /* TeamCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +111,8 @@
 		D9E15BC92FADDE3A00F6F9AB /* MatchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MatchCell.xib; sourceTree = "<group>"; };
 		D9E15BCC2FADE32800F6F9AB /* LeagueDetailsContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueDetailsContract.swift; sourceTree = "<group>"; };
 		D9E15BCE2FADE3CD00F6F9AB /* LeagueDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueDetailsPresenter.swift; sourceTree = "<group>"; };
+		D9F2D4D92FAF6D8400DAF182 /* TeamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCell.swift; sourceTree = "<group>"; };
+		D9F2D4DA2FAF6D8400DAF182 /* TeamCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeamCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -366,6 +370,8 @@
 				D9B11C802FAA906F00E7F85B /* LeagueDetailsViewController.swift */,
 				D9E15BC82FADDE3A00F6F9AB /* MatchCell.swift */,
 				D9E15BC92FADDE3A00F6F9AB /* MatchCell.xib */,
+				D9F2D4D92FAF6D8400DAF182 /* TeamCell.swift */,
+				D9F2D4DA2FAF6D8400DAF182 /* TeamCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -500,6 +506,7 @@
 			files = (
 				9F4F1D4C2FA917F700936107 /* LaunchScreen.storyboard in Resources */,
 				9F4F1D492FA917F700936107 /* Assets.xcassets in Resources */,
+				D9F2D4DC2FAF6D8400DAF182 /* TeamCell.xib in Resources */,
 				D9B578A62FABE51500630E43 /* SportCell.xib in Resources */,
 				D9E15BCB2FADDE3A00F6F9AB /* MatchCell.xib in Resources */,
 				9F4F1D442FA917EE00936107 /* Main.storyboard in Resources */,
@@ -555,6 +562,7 @@
 				9F2699F22FAD379E00765B5A /* LeaguesPresenter.swift in Sources */,
 				9F4F1D3D2FA917EE00936107 /* AppDelegate.swift in Sources */,
 				D9B11C832FAA90E600E7F85B /* TeamDetailsViewController.swift in Sources */,
+				D9F2D4DB2FAF6D8400DAF182 /* TeamCell.swift in Sources */,
 				9F4F1D3F2FA917EE00936107 /* SceneDelegate.swift in Sources */,
 				D9C26C742FACA23100FF489B /* SportsPresenter.swift in Sources */,
 				9F2699F92FAD48AC00765B5A /* SDImageView.swift in Sources */,
