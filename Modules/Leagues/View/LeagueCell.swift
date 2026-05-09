@@ -32,4 +32,10 @@ class LeagueCell: UITableViewCell {
         countryImageView.setImage(league.countryLogo ?? "")
     }
 
+    func configure(with league: FavoriteLeague) {
+        leagueNameLabel.text = league.name
+        countryNameLabel.text = league.country
+        leagueImageView.setImage(league.logo)
+        countryImageView.setImage(league.countryLogo)
+    }
 }
