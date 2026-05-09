@@ -10,11 +10,13 @@ import UIKit
 class LeagueDetailsViewController: UIViewController {
     
     // MARK: - Outlets
-    @IBOutlet weak var tableView:          UITableView!
-    @IBOutlet weak var segmentControl:     UISegmentedControl!
-    @IBOutlet weak var leagueImageView:    UIImageView!
-    @IBOutlet weak var leagueNameLabel:    UILabel!
-    @IBOutlet weak var countrySeasonLabel: UILabel!
+    @IBOutlet weak var tableView:           UITableView!
+    @IBOutlet weak var segmentControl:      UISegmentedControl!
+    @IBOutlet weak var leagueImageView:     UIImageView!
+    @IBOutlet weak var leagueNameLabel:     UILabel!
+    @IBOutlet weak var countrySeasonLabel:  UILabel!
+    @IBOutlet weak var teamsCollectionView: UICollectionView!
+    @IBOutlet weak var tableViewHeight:     NSLayoutConstraint!
     
     // MARK: - Properties
     var currentLeague: League!
@@ -29,6 +31,7 @@ class LeagueDetailsViewController: UIViewController {
         setupPresenter()
         setupUI()
         setupTableView()
+        setupTeamsCollectionView()
         setupSpinner()
         populateLeagueHeader()
         presenter.viewDidLoad()
@@ -45,11 +48,9 @@ class LeagueDetailsViewController: UIViewController {
     
     private func setupUI() {
         let orange = UIColor(red: 255/255, green: 126/255, blue: 33/255, alpha: 1.0)
-        
         segmentControl.selectedSegmentTintColor = orange
         segmentControl.setTitleTextAttributes([.foregroundColor: UIColor.white],    for: .selected)
         segmentControl.setTitleTextAttributes([.foregroundColor: UIColor.darkGray], for: .normal)
-        
         leagueImageView.layer.cornerRadius = 8
         leagueImageView.clipsToBounds = true
     }
@@ -61,6 +62,16 @@ class LeagueDetailsViewController: UIViewController {
         tableView.dataSource      = self
         tableView.separatorStyle  = .none
         tableView.backgroundColor = .clear
+        tableView.isScrollEnabled = false
+    }
+    
+    private func setupTeamsCollectionView() {
+        let nib = UINib(nibName: "TeamCell", bundle: nil)
+        teamsCollectionView.register(nib, forCellWithReuseIdentifier: "TeamCell")
+        teamsCollectionView.delegate             = self
+        teamsCollectionView.dataSource           = self
+        teamsCollectionView.backgroundColor      = .clear
+        teamsCollectionView.showsHorizontalScrollIndicator = false
     }
     
     private func setupSpinner() {
@@ -85,15 +96,13 @@ class LeagueDetailsViewController: UIViewController {
         presenter.didChangeSegment(to: sender.selectedSegmentIndex)
     }
     
+    @IBAction func favoriteButtonClicked(_ sender: UIBarButtonItem) {
+        // setup this action and add what you need to contract & presenter
+    }
 }
 
 // MARK: - UITableViewDataSource
 extension LeagueDetailsViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView,
-                   didSelectRowAt indexPath: IndexPath) {
-        
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
@@ -120,7 +129,6 @@ extension LeagueDetailsViewController: UITableViewDataSource {
                    viewForFooterInSection section: Int) -> UIView? {
         let count = presenter.numberOfRows(for: segmentControl.selectedSegmentIndex)
         guard count == 0 else { return nil }
-        
         let label = UILabel()
         label.text          = emptyMessage(for: segmentControl.selectedSegmentIndex)
         label.textAlignment = .center
@@ -149,6 +157,11 @@ extension LeagueDetailsViewController: UITableViewDataSource {
 extension LeagueDetailsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
+                   didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
         UITableView.automaticDimension
     }
@@ -157,7 +170,46 @@ extension LeagueDetailsViewController: UITableViewDelegate {
                    estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         120
     }
+}
+
+// MARK: - UICollectionViewDataSource
+extension LeagueDetailsViewController: UICollectionViewDataSource {
     
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
+        presenter.numberOfTeams()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: "TeamCell",
+            for: indexPath
+        ) as! TeamCell
+        cell.configure(with: presenter.team(at: indexPath.item))
+        return cell
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+extension LeagueDetailsViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let team = presenter.team(at: indexPath.item)
+        navigateToTeamDetails(with: team)
+    }
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+extension LeagueDetailsViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: 80, height: 100)
+    }
 }
 
 // MARK: - LeagueDetailsViewProtocol
@@ -166,14 +218,16 @@ extension LeagueDetailsViewController: LeagueDetailsViewProtocol {
     func showLoading() {
         DispatchQueue.main.async {
             self.spinner.startAnimating()
-            self.tableView.isHidden = true
+            self.tableView.isHidden           = true
+            self.teamsCollectionView.isHidden = true
         }
     }
     
     func hideLoading() {
         DispatchQueue.main.async {
             self.spinner.stopAnimating()
-            self.tableView.isHidden = false
+            self.tableView.isHidden           = false
+            self.teamsCollectionView.isHidden = false
         }
     }
     
@@ -183,8 +237,22 @@ extension LeagueDetailsViewController: LeagueDetailsViewProtocol {
                 with: self.tableView,
                 duration: 0.3,
                 options: .transitionCrossDissolve,
-                animations: { self.tableView.reloadData() }
+                animations: {
+                    self.tableView.reloadData()
+                },
+                completion: { _ in
+                    self.tableView.layoutIfNeeded()
+                    let minHeight: CGFloat = 400
+                    let contentHeight = self.tableView.contentSize.height
+                    self.tableViewHeight.constant = max(contentHeight, minHeight)
+                }
             )
+        }
+    }
+    
+    func reloadTeams() {
+        DispatchQueue.main.async {
+            self.teamsCollectionView.reloadData()
         }
     }
     
@@ -204,44 +272,40 @@ extension LeagueDetailsViewController: LeagueDetailsViewProtocol {
     }
 }
 
+// MARK: - MatchCellDelegate
 extension LeagueDetailsViewController: MatchCellDelegate {
-
+    
     func didTapHomeTeam(in cell: MatchCell) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
-
-        let fixture = presenter.fixture(
-            at: indexPath.row,
-            for: segmentControl.selectedSegmentIndex
-        )
-
-        let teamName = fixture.homeTeamName ?? ""
-
-        navigateToTeamDetails(teamName: teamName)
+        let fixture = presenter.fixture(at: indexPath.row, for: segmentControl.selectedSegmentIndex)
+        navigateToTeamDetails(teamName: fixture.homeTeamName ?? "")
     }
-
+    
     func didTapAwayTeam(in cell: MatchCell) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
+        let fixture = presenter.fixture(at: indexPath.row, for: segmentControl.selectedSegmentIndex)
+        navigateToTeamDetails(teamName: fixture.awayTeamName ?? "")
+    }
+}
 
-        let fixture = presenter.fixture(
-            at: indexPath.row,
-            for: segmentControl.selectedSegmentIndex
-        )
-
-        let teamName = fixture.awayTeamName ?? ""
-
-        navigateToTeamDetails(teamName: teamName)
+// MARK: - Navigation
+extension LeagueDetailsViewController {
+    
+    private func navigateToTeamDetails(with team: Team) {
+        guard let vc = storyboard?.instantiateViewController(
+            withIdentifier: "TeamDetailsViewController"
+        ) as? TeamDetailsViewController else { return }
+        vc.hidesBottomBarWhenPushed = true
+        vc.teamName = team.name
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     private func navigateToTeamDetails(teamName: String) {
-
         guard let vc = storyboard?.instantiateViewController(
             withIdentifier: "TeamDetailsViewController"
-        ) as? TeamDetailsViewController else {
-            return
-        }
-
+        ) as? TeamDetailsViewController else { return }
+        vc.hidesBottomBarWhenPushed = true
         vc.teamName = teamName
-
         navigationController?.pushViewController(vc, animated: true)
     }
 }

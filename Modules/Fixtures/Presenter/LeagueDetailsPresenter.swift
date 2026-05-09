@@ -18,6 +18,7 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
     private(set) var upcomingFixtures: [Fixture] = []
     private(set) var pastFixtures:     [Fixture] = []
     private(set) var liveFixtures:     [Fixture] = []
+    private(set) var teams:            [Team]    = []
     
     // MARK: - Init
     init(
@@ -34,7 +35,7 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
     
     // MARK: - LeagueDetailsPresenterProtocol
     func viewDidLoad() {
-        fetchFixtures()
+        fetchAll()
     }
     
     func didChangeSegment(to index: Int) {
@@ -59,8 +60,15 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
         }
     }
     
-    // MARK: - Private
-    private func fetchFixtures() {
+    func numberOfTeams() -> Int {
+        teams.count
+    }
+    
+    func team(at index: Int) -> Team {
+        teams[index]
+    }
+    
+    private func fetchAll() {
         view?.showLoading()
         
         let group = DispatchGroup()
@@ -72,6 +80,7 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
             switch result {
             case .success(let fixtures):
                 self?.upcomingFixtures = fixtures.filter { !$0.isLive }
+                self?.liveFixtures     = fixtures.filter { $0.isLive }
             case .failure(let error):
                 fetchError = error
             }
@@ -89,11 +98,11 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
         }
         
         group.enter()
-        apiManager.fetchUpcomingFixtures(for: sport, leagueId: leagueId) { [weak self] result in
+        apiManager.fetchTeams(for: sport, leagueId: leagueId) { [weak self] result in
             defer { group.leave() }
             switch result {
-            case .success(let fixtures):
-                self?.liveFixtures = fixtures.filter { $0.isLive }
+            case .success(let teams):
+                self?.teams = teams
             case .failure(let error):
                 fetchError = error
             }
@@ -105,6 +114,7 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
                 self?.view?.showError(message: error.localizedDescription)
             } else {
                 self?.view?.reloadFixtures()
+                self?.view?.reloadTeams()
             }
         }
     }
