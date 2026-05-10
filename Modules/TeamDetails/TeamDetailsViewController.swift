@@ -8,7 +8,7 @@
 import UIKit
 
 class TeamDetailsViewController: UIViewController {
-    var teamName: String!
+    var teamId: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()

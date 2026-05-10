@@ -2,7 +2,7 @@
 //  MatchCell.swift
 //  Sporta
 //
-//  Created by Hossam on 08/05/2026.
+//  Created by Mohamed Ayman on 08/05/2026.
 //
 
 import UIKit
@@ -12,72 +12,74 @@ protocol MatchCellDelegate: AnyObject {
     func didTapAwayTeam(in cell: MatchCell)
 }
 
-class MatchCell: UITableViewCell {
+class MatchCell: UICollectionViewCell {
     
     // MARK: - Outlets
-    @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var leagueLabel: UILabel!
-    @IBOutlet weak var statusLabel: UILabel!
-    @IBOutlet weak var homeLogo: UIImageView!
-    @IBOutlet weak var homeName: UILabel!
-    @IBOutlet weak var scoreLabel: UILabel!
-    @IBOutlet weak var awayLogo: UIImageView!
-    @IBOutlet weak var awayName: UILabel!
-    @IBOutlet weak var footerLabel: UILabel!
-    @IBOutlet weak var awayTeamContainer: UIStackView!
+    @IBOutlet weak var cardView:      UIView!
+    @IBOutlet weak var leagueLabel:   UILabel!
+    @IBOutlet weak var statusLabel:   UILabel!
+    @IBOutlet weak var homeLogo:      UIImageView!
+    @IBOutlet weak var homeName:      UILabel!
+    @IBOutlet weak var scoreLabel:    UILabel!
+    @IBOutlet weak var awayLogo:      UIImageView!
+    @IBOutlet weak var awayName:      UILabel!
+    @IBOutlet weak var footerLabel:   UILabel!
     @IBOutlet weak var homeTeamContainer: UIStackView!
-    
+    @IBOutlet weak var awayTeamContainer: UIStackView!
+    // MARK: - Properties
     weak var delegate: MatchCellDelegate?
     
     // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCardStyle()
-        setupGestures();
+        setupGestures()
     }
     
     // MARK: - Setup
     private func setupCardStyle() {
-        cardView.layer.cornerRadius = 12
-        cardView.layer.shadowColor = UIColor.black.cgColor
+        cardView.layer.cornerRadius  = 12
+        cardView.layer.shadowColor   = UIColor.black.cgColor
         cardView.layer.shadowOpacity = 0.1
-        cardView.layer.shadowOffset = CGSize(width: 0, height: 2)
-        cardView.layer.shadowRadius = 4
+        cardView.layer.shadowOffset  = CGSize(width: 0, height: 2)
+        cardView.layer.shadowRadius  = 4
         cardView.layer.masksToBounds = false
-        contentView.backgroundColor = .clear
+        contentView.backgroundColor  = .clear
+        backgroundColor              = .clear
     }
     
     private func setupGestures() {
-
-        let homeTap = UITapGestureRecognizer(
-            target: self,
-            action: #selector(didTapHome)
-        )
+        let homeTap = UITapGestureRecognizer(target: self, action: #selector(homeTapped))
+        let awayTap = UITapGestureRecognizer(target: self, action: #selector(awayTapped))
         homeTeamContainer.isUserInteractionEnabled = true
-        homeTeamContainer.addGestureRecognizer(homeTap)
-
-        let awayTap = UITapGestureRecognizer(
-            target: self,
-            action: #selector(didTapAway)
-        )
         awayTeamContainer.isUserInteractionEnabled = true
+        homeTeamContainer.addGestureRecognizer(homeTap)
         awayTeamContainer.addGestureRecognizer(awayTap)
+    }
+    
+    // MARK: - Actions
+    @objc private func homeTapped() {
+        delegate?.didTapHomeTeam(in: self)
+    }
+    
+    @objc private func awayTapped() {
+        delegate?.didTapAwayTeam(in: self)
     }
     
     // MARK: - Reuse
     override func prepareForReuse() {
         super.prepareForReuse()
-        homeLogo.image = nil
-        awayLogo.image = nil
-        homeName.text = nil
-        awayName.text = nil
-        scoreLabel.text = nil
-        statusLabel.text = nil
-        leagueLabel.text = nil
-        footerLabel.text = nil
+        homeLogo.image    = nil
+        awayLogo.image    = nil
+        homeName.text     = nil
+        awayName.text     = nil
+        scoreLabel.text   = nil
+        statusLabel.text  = nil
+        leagueLabel.text  = nil
+        footerLabel.text  = nil
     }
     
-    // MARK: - Configuration
+    // MARK: - Configure
     func configure(with fixture: Fixture) {
         leagueLabel.text = fixture.leagueName
         homeName.text    = fixture.homeTeamName
@@ -100,13 +102,5 @@ class MatchCell: UITableViewCell {
         
         homeLogo.setImage(fixture.homeTeamLogo ?? "")
         awayLogo.setImage(fixture.awayTeamLogo ?? "")
-    }
-    
-    @objc private func didTapHome() {
-        delegate?.didTapHomeTeam(in: self)
-    }
-
-    @objc private func didTapAway() {
-        delegate?.didTapAwayTeam(in: self)
     }
 }

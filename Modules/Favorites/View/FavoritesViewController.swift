@@ -115,28 +115,20 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
 extension FavoritesViewController {
     
     private func showDeleteConfirmation(for league: FavoriteLeague, at indexPath: IndexPath, completion: @escaping (Bool) -> Void) {
-        let alert = UIAlertController(
-            title: "Delete Item?",
-            message: "Are you sure you want to delete \(league.name)?",
-            preferredStyle: .alert
-        )
-
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] _ in
-            guard let self = self else { return }
+        
+        AlertManager.showDeleteConfirmation(
+            on: self,
+            message: "Are you sure you want to delete \(league.name)?"
+        ) { [weak self] confirmed in
+            
+            guard let self = self, confirmed else {
+                completion(false)
+                return
+            }
             
             self.presenter.delete(league: league)
-            
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
             completion(true)
         }
-
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
-            completion(false)
-        }
-
-        alert.addAction(deleteAction)
-        alert.addAction(cancelAction)
-
-        present(alert, animated: true)
     }
 }
