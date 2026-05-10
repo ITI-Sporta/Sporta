@@ -42,14 +42,20 @@ class ApiManagerImp: ApiManager {
 
         AF.request(url, parameters: parameters)
             .validate()
-            .responseDecodable(of: AllSportsResponse<T>.self) { response in
-                print("ApiManager: recieved response!")
+            .responseData { [weak self] response in
+                guard let self else { return }
                 switch response.result {
-                case .success(let apiResponse):
-                    if let result = apiResponse.result {
-                        completion(.success(result))
-                    } else {
-                        completion(.failure(.noData))
+                case .success(let rawData):
+                    let data = self.normalizeFixtureLogoKeys(in: rawData)
+                    do {
+                        let apiResponse = try JSONDecoder().decode(AllSportsResponse<T>.self, from: data)
+                        if let result = apiResponse.result {
+                            completion(.success(result))
+                        } else {
+                            completion(.failure(.noData))
+                        }
+                    } catch {
+                        completion(.failure(.apiError(error.localizedDescription)))
                     }
                 case .failure(let afError):
                     if let data = response.data,
@@ -194,6 +200,22 @@ class ApiManagerImp: ApiManager {
             "secondTeamId": String(secondTeamId)
         ]
         fetch(sport, params: params, completion: completion)
+    }
+}
+
+extension ApiManagerImp {
+    func normalizeFixtureLogoKeys(in data: Data) -> Data {
+        guard var response = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+              let fixtures = response["result"] as? [[String: Any]] else { return data }
+        
+        response["result"] = fixtures.map { fixture in
+            var normalized = fixture
+            if let homeLogo = fixture["event_home_team_logo"] { normalized["home_team_logo"] = homeLogo }
+            if let awayLogo = fixture["event_away_team_logo"] { normalized["away_team_logo"] = awayLogo }
+            return normalized
+        }
+        
+        return (try? JSONSerialization.data(withJSONObject: response)) ?? data
     }
 }
 

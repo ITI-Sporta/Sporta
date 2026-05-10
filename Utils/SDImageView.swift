@@ -12,7 +12,7 @@ extension UIImageView {
     func setImage(_ stringUrl: String) {
         sd_setImage(
             with: URL(string: stringUrl),
-            placeholderImage: UIImage(systemName: "photo.fill")
+            placeholderImage: UIImage(named: "logo_icon")
         )
     }
 }
