@@ -17,6 +17,7 @@ class LeagueDetailsViewController: UIViewController {
     @IBOutlet weak var countrySeasonLabel:  UILabel!
     @IBOutlet weak var teamsCollectionView: UICollectionView!
     @IBOutlet weak var tableViewHeight:     NSLayoutConstraint!
+    @IBOutlet weak var toggleFavoriteBtn: UIBarButtonItem!
     
     // MARK: - Properties
     var currentLeague: League!
@@ -28,6 +29,7 @@ class LeagueDetailsViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+
         setupPresenter()
         setupUI()
         setupTableView()
@@ -35,6 +37,11 @@ class LeagueDetailsViewController: UIViewController {
         setupSpinner()
         populateLeagueHeader()
         presenter.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupFavoriteButton()
     }
     
     // MARK: - Setup
@@ -97,7 +104,11 @@ class LeagueDetailsViewController: UIViewController {
     }
     
     @IBAction func favoriteButtonClicked(_ sender: UIBarButtonItem) {
-        // setup this action and add what you need to contract & presenter
+        presenter.toggleIsFavorite(league: currentLeague)
+    }
+    
+    func setupFavoriteButton() {
+        presenter.checkIsFavorite(id: currentLeague.id)
     }
 }
 
@@ -269,6 +280,10 @@ extension LeagueDetailsViewController: LeagueDetailsViewProtocol {
             alert.addAction(UIAlertAction(title: "OK", style: .cancel))
             self.present(alert, animated: true)
         }
+    }
+    
+    func setFavoriteIcon(systemName: String) {
+        toggleFavoriteBtn.image = UIImage(systemName: systemName)
     }
 }
 

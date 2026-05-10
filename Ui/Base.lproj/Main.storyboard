@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lYm-NE-avb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lYm-NE-avb">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,11 +15,26 @@
                     <view key="view" contentMode="scaleToFill" id="x9X-Up-Ekb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="oUB-jy-RBe">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="lHH-xU-2sk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="lHH-xU-2sk" firstAttribute="trailing" secondItem="oUB-jy-RBe" secondAttribute="trailing" id="4md-BU-epa"/>
+                            <constraint firstItem="oUB-jy-RBe" firstAttribute="leading" secondItem="lHH-xU-2sk" secondAttribute="leading" id="96k-4V-30c"/>
+                            <constraint firstItem="lHH-xU-2sk" firstAttribute="bottom" secondItem="oUB-jy-RBe" secondAttribute="bottom" id="PDA-y0-0Fa"/>
+                            <constraint firstItem="oUB-jy-RBe" firstAttribute="top" secondItem="lHH-xU-2sk" secondAttribute="top" id="yC2-jG-ezZ"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="FHM-4H-wOD"/>
+                    <navigationItem key="navigationItem" id="FHM-4H-wOD">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="mbe-2p-pyG"/>
+                    </navigationItem>
                     <connections>
+                        <outlet property="tableView" destination="oUB-jy-RBe" id="LYC-nd-yM8"/>
                         <segue destination="FKo-AB-3LH" kind="show" identifier="goToFixtures" id="ewc-di-WK3"/>
                     </connections>
                 </viewController>
@@ -37,7 +51,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1A-vW-XYZ">
-                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C0N-T-VwG" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="709.5"/>
@@ -151,7 +165,7 @@
                     <tabBarItem key="tabBarItem" title="Sports" image="sportscourt" catalog="system" selectedImage="sportscourt.fill" id="0Oy-oJ-M6P"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WdG-YB-CjZ">
-                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -170,7 +184,7 @@
                     <tabBarItem key="tabBarItem" title="Favorites" image="heart" catalog="system" selectedImage="heart.fill" id="4DQ-vI-hd4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="63M-Wv-I8g">
-                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -191,7 +205,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="347-EY-8FO">
-                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sGG-Z0-7Z6"/>
@@ -224,7 +238,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mainScrollView">
-                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="contentView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="952"/>
@@ -366,6 +380,7 @@
                         <outlet property="tableView" destination="mainTableView" id="tableOutlet"/>
                         <outlet property="tableViewHeight" destination="tableViewHeight" id="s5V-bP-8kL"/>
                         <outlet property="teamsCollectionView" destination="teamsCollectionView" id="teamsCollectionOutlet"/>
+                        <outlet property="toggleFavoriteBtn" destination="AKt-QO-M2j" id="kl3-d8-xdk"/>
                         <segue destination="C7i-v0-aWQ" kind="show" identifier="goToTeamDetails" id="HEy-Iu-HZH"/>
                     </connections>
                 </viewController>
@@ -409,11 +424,11 @@
         <segue reference="Qv9-YR-R9c"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="heart" catalog="system" width="128" height="107"/>
-        <image name="heart.fill" catalog="system" width="128" height="107"/>
+        <image name="heart" catalog="system" width="128" height="109"/>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="logo_icon" width="1024" height="932"/>
-        <image name="sportscourt" catalog="system" width="128" height="83"/>
-        <image name="sportscourt.fill" catalog="system" width="128" height="83"/>
+        <image name="sportscourt" catalog="system" width="128" height="84"/>
+        <image name="sportscourt.fill" catalog="system" width="128" height="84"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

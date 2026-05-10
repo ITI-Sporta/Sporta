@@ -20,6 +20,8 @@ protocol LeagueDetailsPresenterProtocol: AnyObject {
     func fixture(at index: Int, for segmentIndex: Int) -> Fixture
     func numberOfTeams() -> Int
     func team(at index: Int) -> Team
+    func checkIsFavorite(id: Int)
+    func toggleIsFavorite(league: League)
 }
 
 // MARK: - View Protocol (Presenter → View)
@@ -29,4 +31,5 @@ protocol LeagueDetailsViewProtocol: AnyObject {
     func reloadFixtures()
     func reloadTeams()
     func showError(message: String)
+    func setFavoriteIcon(systemName: String)
 }
