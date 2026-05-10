@@ -43,7 +43,7 @@ class ApiManagerImp: ApiManager {
         AF.request(url, parameters: parameters)
             .validate()
             .responseData { [weak self] response in
-                guard let self else { return }
+                guard let self = self else { return }
                 switch response.result {
                 case .success(let rawData):
                     let data = self.normalizeFixtureLogoKeys(in: rawData)
@@ -173,7 +173,7 @@ class ApiManagerImp: ApiManager {
             "to": to
         ]
 
-        if let leagueId {
+        if let leagueId = leagueId {
             params["leagueId"] = String(leagueId)
         }
         
@@ -224,7 +224,7 @@ extension ApiManagerImp {
         guard var response = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
               let fixtures = response["result"] as? [[String: Any]] else { return data }
         
-        response["result"] = fixtures.map { fixture in
+        response["result"] = fixtures.map { fixture -> [String : Any] in
             var normalized = fixture
             if let homeLogo = fixture["event_home_team_logo"] { normalized["home_team_logo"] = homeLogo }
             if let awayLogo = fixture["event_away_team_logo"] { normalized["away_team_logo"] = awayLogo }
