@@ -14,7 +14,7 @@ import Alamofire
 ///latest + upcoming: change from / to
 ///https://apiv2.allsportsapi.com/basketball/?met=Fixtures&from=2026-05-06&to=2027-01-01&leagueId=757&APIkey=
 /// all teams: https://apiv2.allsportsapi.com/football/?met=Teams&leagueId=177&APIkey=
-/// team details:
+/// team details: https://apiv2.allsportsapi.com/football/?met=Teams&teamId=4281&APIkey=
 ///upcoming + past: change from / to https://apiv2.allsportsapi.com/basketball/?met=Fixtures&teamId=144&from=2026-05-06&to=2027-01-01&leagueId=757&APIkey=b7
 ///league standing: https://apiv2.allsportsapi.com/football/?met=Standings&leagueId=177&APIkey=b7
 ///head to head: https://apiv2.allsportsapi.com/football/?met=H2H&firstTeamId=177&secondTeamId=80&APIkey=b7
@@ -42,14 +42,20 @@ class ApiManagerImp: ApiManager {
 
         AF.request(url, parameters: parameters)
             .validate()
-            .responseDecodable(of: AllSportsResponse<T>.self) { response in
-                print("ApiManager: recieved response!")
+            .responseData { [weak self] response in
+                guard let self else { return }
                 switch response.result {
-                case .success(let apiResponse):
-                    if let result = apiResponse.result {
-                        completion(.success(result))
-                    } else {
-                        completion(.failure(.noData))
+                case .success(let rawData):
+                    let data = self.normalizeFixtureLogoKeys(in: rawData)
+                    do {
+                        let apiResponse = try JSONDecoder().decode(AllSportsResponse<T>.self, from: data)
+                        if let result = apiResponse.result {
+                            completion(.success(result))
+                        } else {
+                            completion(.failure(.noData))
+                        }
+                    } catch {
+                        completion(.failure(.apiError(error.localizedDescription)))
                     }
                 case .failure(let afError):
                     if let data = response.data,
@@ -125,7 +131,7 @@ class ApiManagerImp: ApiManager {
     func fetchPastTeamFixtures(
         for sport: Sport,
         teamId: Int,
-        leagueId: Int,
+        leagueId: Int? = nil,
         completion: @escaping (Result<[Fixture], AllSportsError>) -> Void
     ) {
         let today = Date()
@@ -140,7 +146,7 @@ class ApiManagerImp: ApiManager {
     func fetchUpcomingTeamFixtures(
         for sport: Sport,
         teamId: Int,
-        leagueId: Int,
+        leagueId: Int? = nil,
         completion: @escaping (Result<[Fixture], AllSportsError>) -> Void
     ) {
         let today = Date()
@@ -155,18 +161,22 @@ class ApiManagerImp: ApiManager {
     private func fetchTeamFixtures(
         for sport: Sport,
         teamId: Int,
-        leagueId: Int,
+        leagueId: Int? = nil,
         from: String,
         to: String,
         completion: @escaping (Result<[Fixture], AllSportsError>) -> Void
     ) {
-        let params: [String: String] = [
-            "met":      "Fixtures",
-            "teamId":   String(teamId),
-            "leagueId": String(leagueId),
-            "from":     from,
-            "to":       to
+        var params: [String: String] = [
+            "met": "Fixtures",
+            "teamId": String(teamId),
+            "from": from,
+            "to": to
         ]
+
+        if let leagueId {
+            params["leagueId"] = String(leagueId)
+        }
+        
         fetch(sport, params: params, completion: completion)
     }
     
@@ -195,62 +205,32 @@ class ApiManagerImp: ApiManager {
         ]
         fetch(sport, params: params, completion: completion)
     }
+    func fetchTeamDetails(
+        for sport: Sport,
+        teamId: Int,
+        completion: @escaping (Result<[TeamDetails], AllSportsError>) -> Void
+    ) {
+        let params: [String: String] = [
+            "met": "Teams",
+            "teamId": String(teamId)
+        ]
+
+        fetch(sport, params: params, completion: completion)
+    }
 }
 
-/*  for testing
- let api = ApiManagerImp.shared
- 
- api.fetchLeagues(for: .football) { result in
-     switch result {
-     case .success(let leagues):
-         api.fetchStandings(for: .football, leagueId: leagues[0].id) { result in
-             print("fetchStandings")
-             switch result {
-             case .success(let standings):
-                 print(standings.total?[0].teamName ?? "No Name")
-                 
-             case .failure(let failedRes) :
-                 print(failedRes.errorDescription ?? "error")
-             }
-         }
-         api.fetchUpcomingFixtures(for: .football, leagueId: leagues[0].id) { result in
-             print("fetchUpcomingFixtures")
-             switch result {
-             case .success(let fixtures):
-                 print(fixtures[0].awayTeamName ?? "no team name")
-                 
-             case .failure(let failedRes) :
-                 print(failedRes.errorDescription ?? "error")
-             }
-         }
-         api.fetchTeams(for: .football, leagueId: leagues[0].id) { result in
-             print("fetchTeams")
-             switch result {
-             case .success(let teams) :
-                 api.fetchH2H(for: .football, firstTeamId: teams[0].id, secondTeamId: teams[1].id) { result2 in
-                     print("fetchh2h")
-                     switch result2 {
-                     case .success(let h2h):
-                         print(h2h.h2hResults?[0].awayTeamName ?? "No Name")
-                     case .failure(let failRes):
-                         print(failRes.errorDescription ?? "error")
-                     }
-                 }
-                 api.fetchUpcomingTeamFixtures(for: .football, teamId: teams[0].id, leagueId: leagues[0].id) { result in
-                     switch result {
-                     case .success(let fixtures):
-                         print(fixtures[0].awayTeamName ?? "no team name")
-                         
-                     case .failure(let failedRes) :
-                         print(failedRes.errorDescription ?? "error")
-                     }
-                 }
-             case .failure(let failedRes):
-                 print(failedRes.errorDescription ?? "error")
-             }
-         }
-     case .failure(let response):
-         print(response.errorDescription ?? "error")
-     }
- }
- */
+extension ApiManagerImp {
+    func normalizeFixtureLogoKeys(in data: Data) -> Data {
+        guard var response = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+              let fixtures = response["result"] as? [[String: Any]] else { return data }
+        
+        response["result"] = fixtures.map { fixture in
+            var normalized = fixture
+            if let homeLogo = fixture["event_home_team_logo"] { normalized["home_team_logo"] = homeLogo }
+            if let awayLogo = fixture["event_away_team_logo"] { normalized["away_team_logo"] = awayLogo }
+            return normalized
+        }
+        
+        return (try? JSONSerialization.data(withJSONObject: response)) ?? data
+    }
+}

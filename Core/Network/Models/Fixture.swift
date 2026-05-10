@@ -43,5 +43,5 @@ struct Fixture: Codable, Identifiable {
     }
 
     var isFinished: Bool { status == "Finished" }
-    var isLive: Bool { status == "1H" || status == "2H" || status == "HT" }
+    var isLive: Bool { status == "1H" || status == "2H" || status == "HT" || status == "Q1" || status == "Q2" || status == "Q3" || status == "Q4"}
 }
