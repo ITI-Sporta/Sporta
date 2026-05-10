@@ -22,6 +22,7 @@ protocol LeagueDetailsPresenterProtocol: AnyObject {
     func team(at index: Int) -> Team
     func checkIsFavorite(id: Int)
     func toggleIsFavorite(league: League)
+    func getTeamId(teamName:String) -> Int
 }
 
 // MARK: - View Protocol (Presenter → View)

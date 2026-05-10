@@ -9,6 +9,7 @@ import Foundation
 
 class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
     
+    
     // MARK: - Properties
     private weak var view: LeagueDetailsViewProtocol?
     private let apiManager: ApiManager
@@ -134,12 +135,16 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
     func toggleIsFavorite(league: League) {
         let isFavorite = db.isFavoriteLeague(id: league.id)
         if isFavorite {
-            let _ = db.deleteFavoriteLeague(by: league.id) // returns isSuccess
+            let _ = db.deleteFavoriteLeague(by: league.id)
             view?.setFavoriteIcon(systemName: "heart")
         } else {
-            let _ = db.addFavoriteLeague(league.toFavorite(sport)) // returns isSuccess
+            let _ = db.addFavoriteLeague(league.toFavorite(sport))
             view?.setFavoriteIcon(systemName: "heart.fill")
         }
+    }
+    
+    func getTeamId(teamName: String) -> Int {
+        return teams.first(where: { $0.name == teamName })?.id ?? 0
     }
 }
 
