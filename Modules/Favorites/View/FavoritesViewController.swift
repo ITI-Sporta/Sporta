@@ -12,14 +12,19 @@ class FavoritesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     var presenter: FavoritesPresenterProtocol!
-    let activityIndicator = UIActivityIndicatorView(style: .large)
-    
-    let refreshControl = UIRefreshControl()
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(false, animated: false)
         title = "Sporta"
+        presenter = FavoritesPresenter(view: self)
+        setupTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        presenter.reloadData()
     }
     
     private func setupTableView() {
@@ -28,44 +33,18 @@ class FavoritesViewController: UIViewController {
         tableView.delegate   = self
         tableView.dataSource = self
     }
-    
-    func setupIndicator() {
-        activityIndicator.center = view.center
-        activityIndicator.hidesWhenStopped = true
-        view.addSubview(activityIndicator)
-    }
-    
-    func setupRefreshControl() {
-          refreshControl.addTarget(
-              self,
-              action: #selector(refreshData),
-              for: .valueChanged
-          )
-          tableView.refreshControl = refreshControl
-      }
 
-      @objc func refreshData() {
-          presenter.reloadData()
-      }
 }
 
 extension FavoritesViewController: FavoritesViewProtocol {
-    func showLoading() {
-    
-    }
-    
-    func hideLoading() {
-    
-    }
     
     func reloadData() {
-    
+        tableView.reloadData()
     }
     
-    func shwoDeleteUndo(message: String) {
-        
+    func show(title: String, message: String) {
+        // TODO: Show something like a SnackBar
     }
-    
     
 }
 
@@ -94,11 +73,12 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
         ) as? LeagueDetailsViewController else {
             return
         }
-
+        vc.hidesBottomBarWhenPushed = true
         vc.currentLeague = selectedLeague.toLeague()
         vc.sport = selectedLeague.sport
 
         navigationController?.pushViewController(vc, animated: true)
+        tableView.deselectRow(at: indexPath, animated: false)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

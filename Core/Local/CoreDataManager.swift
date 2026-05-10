@@ -35,7 +35,8 @@ class CoreDataManager : DatabaseProtocol {
         request.fetchLimit = 1
         
         do {
-            return try context.fetch(request)[0]
+            let resultArray = try context.fetch(request)
+            return resultArray.isEmpty ? nil : resultArray.first
         } catch {
             print(error)
             return nil

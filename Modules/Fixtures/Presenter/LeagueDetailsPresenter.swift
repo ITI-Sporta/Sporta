@@ -14,6 +14,7 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
     private let apiManager: ApiManager
     private let leagueId: Int
     private let sport: Sport
+    private let db: DatabaseProtocol
     
     private(set) var upcomingFixtures: [Fixture] = []
     private(set) var pastFixtures:     [Fixture] = []
@@ -24,6 +25,7 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
     init(
         view: LeagueDetailsViewProtocol,
         apiManager: ApiManager = ApiManagerImp.shared,
+        db: DatabaseProtocol = CoreDataManager.shared,
         leagueId: Int,
         sport: Sport
     ) {
@@ -31,6 +33,7 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
         self.apiManager = apiManager
         self.leagueId   = leagueId
         self.sport      = sport
+        self.db         = db
     }
     
     // MARK: - LeagueDetailsPresenterProtocol
@@ -118,5 +121,30 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
             }
         }
     }
+    
+    func checkIsFavorite(id: Int) {
+        let isFavorite = db.isFavoriteLeague(id: id)
+        if isFavorite {
+            view?.setFavoriteIcon(systemName: "heart.fill")
+        } else {
+            view?.setFavoriteIcon(systemName: "heart")
+        }
+    }
+    
+    func toggleIsFavorite(league: League) {
+        let isFavorite = db.isFavoriteLeague(id: league.id)
+        if isFavorite {
+            let _ = db.deleteFavoriteLeague(by: league.id) // returns isSuccess
+            view?.setFavoriteIcon(systemName: "heart")
+        } else {
+            let _ = db.addFavoriteLeague(league.toFavorite(sport)) // returns isSuccess
+            view?.setFavoriteIcon(systemName: "heart.fill")
+        }
+    }
 }
 
+extension League {
+    func toFavorite(_ sport: Sport) -> FavoriteLeague {
+        FavoriteLeague(id: id, name: name, country: country ?? "", logo: logo ?? "", countryLogo: countryLogo ?? "", sport: sport)
+    }
+}

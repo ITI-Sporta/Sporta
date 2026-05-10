@@ -15,8 +15,6 @@ protocol FavoritesPresenterProtocol {
 }
 
 protocol FavoritesViewProtocol: AnyObject {
-    func showLoading()
-    func hideLoading()
     func reloadData()
-    func shwoDeleteUndo(message: String)
+    func show(title: String, message: String)
 }

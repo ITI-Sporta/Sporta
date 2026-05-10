@@ -30,7 +30,9 @@
                             <constraint firstItem="oUB-jy-RBe" firstAttribute="top" secondItem="lHH-xU-2sk" secondAttribute="top" id="yC2-jG-ezZ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="FHM-4H-wOD"/>
+                    <navigationItem key="navigationItem" id="FHM-4H-wOD">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="mbe-2p-pyG"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="oUB-jy-RBe" id="LYC-nd-yM8"/>
                         <segue destination="FKo-AB-3LH" kind="show" identifier="goToFixtures" id="ewc-di-WK3"/>
@@ -163,6 +165,7 @@
                     <tabBarItem key="tabBarItem" title="Sports" image="sportscourt" catalog="system" selectedImage="sportscourt.fill" id="0Oy-oJ-M6P"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WdG-YB-CjZ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -377,6 +380,7 @@
                         <outlet property="tableView" destination="mainTableView" id="tableOutlet"/>
                         <outlet property="tableViewHeight" destination="tableViewHeight" id="s5V-bP-8kL"/>
                         <outlet property="teamsCollectionView" destination="teamsCollectionView" id="teamsCollectionOutlet"/>
+                        <outlet property="toggleFavoriteBtn" destination="AKt-QO-M2j" id="kl3-d8-xdk"/>
                         <segue destination="C7i-v0-aWQ" kind="show" identifier="goToTeamDetails" id="HEy-Iu-HZH"/>
                     </connections>
                 </viewController>
@@ -417,7 +421,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ewc-di-WK3"/>
+        <segue reference="Qv9-YR-R9c"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="heart" catalog="system" width="128" height="109"/>
