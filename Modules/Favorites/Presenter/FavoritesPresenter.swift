@@ -24,6 +24,9 @@ class FavoritesPresenter: FavoritesPresenterProtocol {
         let success = db.deleteFavoriteLeague(by: league.id)
         
         if success {
+            leagues.removeAll {
+                $0.id == league.id
+            }
             view?.show(title: "Success", message: "Deleted \(league.name) from favorites")
         } else {
             view?.show(title: "Error", message: "Unable to delete \(league.name) from favorites")
