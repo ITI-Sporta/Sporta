@@ -76,9 +76,9 @@ class ApiManagerImp: ApiManager {
         completion: @escaping (Result<[Fixture], AllSportsError>) -> Void
     ) {
         let today = Date()
-        let pastYear = Calendar.current.date(byAdding: .year, value: -1, to: today)!
+        let pastTwoWeeks = Calendar.current.date(byAdding: .day, value: -14, to: today)!
         
-        let from = formatter.string(from: pastYear)
+        let from = formatter.string(from: pastTwoWeeks)
         let to = formatter.string(from: today)
         
         fetchFixtures(for: sport, leagueId:leagueId,from:from,to:to ,completion:completion)
@@ -90,10 +90,10 @@ class ApiManagerImp: ApiManager {
         completion: @escaping (Result<[Fixture], AllSportsError>) -> Void
     ) {
         let today = Date()
-        let nextYear = Calendar.current.date(byAdding: .year, value: 1, to: today)!
+        let nextTwoWeeks = Calendar.current.date(byAdding: .day, value: 14, to: today)!
         
         let from = formatter.string(from: today)
-        let to = formatter.string(from: nextYear)
+        let to = formatter.string(from: nextTwoWeeks)
         
         fetchFixtures(for: sport, leagueId: leagueId, from: from, to: to, completion: completion)
     }
@@ -133,9 +133,9 @@ class ApiManagerImp: ApiManager {
         completion: @escaping (Result<[Fixture], AllSportsError>) -> Void
     ) {
         let today = Date()
-        let pastYear = Calendar.current.date(byAdding: .year, value: -1, to: today)!
+        let pastTwoWeeks = Calendar.current.date(byAdding: .day, value: -14, to: today)!
         
-        let from = formatter.string(from: pastYear)
+        let from = formatter.string(from: pastTwoWeeks)
         let to = formatter.string(from: today)
         
         fetchTeamFixtures(for: sport, teamId: teamId, leagueId: leagueId, from: from, to: to, completion: completion)
@@ -148,10 +148,10 @@ class ApiManagerImp: ApiManager {
         completion: @escaping (Result<[Fixture], AllSportsError>) -> Void
     ) {
         let today = Date()
-        let nextYear = Calendar.current.date(byAdding: .year, value: 1, to: today)!
+        let nextTwoWeeks = Calendar.current.date(byAdding: .day, value: 14, to: today)!
         
         let from = formatter.string(from: today)
-        let to = formatter.string(from: nextYear)
+        let to = formatter.string(from: nextTwoWeeks)
         
         fetchTeamFixtures(for: sport, teamId: teamId, leagueId: leagueId, from: from, to: to, completion: completion)
     }
@@ -203,6 +203,7 @@ class ApiManagerImp: ApiManager {
         ]
         fetch(sport, params: params, completion: completion)
     }
+
     func fetchTeamDetails(
         for sport: Sport,
         teamId: Int,
