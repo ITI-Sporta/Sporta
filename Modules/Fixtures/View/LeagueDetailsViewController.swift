@@ -321,6 +321,7 @@ extension LeagueDetailsViewController {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "TeamDetailsViewController") as? TeamDetailsViewController else { return }
         vc.hidesBottomBarWhenPushed = true
         vc.teamId = team.id
+        vc.sport = sport
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -328,6 +329,7 @@ extension LeagueDetailsViewController {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "TeamDetailsViewController") as? TeamDetailsViewController else { return }
         vc.hidesBottomBarWhenPushed = true
         vc.teamId = presenter.getTeamId(teamName: teamName)
+        vc.sport = sport
         navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -38,6 +38,7 @@
 		9FF4D4A62FB3A7E60029FFC9 /* PlayerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FF4D4A42FB3A7E60029FFC9 /* PlayerCell.xib */; };
 		9FF4D4A82FB3B0B70029FFC9 /* TeamDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF4D4A72FB3B0B70029FFC9 /* TeamDetailsPresenter.swift */; };
 		9FF4D4AA2FB3B5C80029FFC9 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF4D4A92FB3B5C80029FFC9 /* K.swift */; };
+		9FF4D4AC2FB3EBAD0029FFC9 /* Contract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF4D4AB2FB3EBAC0029FFC9 /* Contract.swift */; };
 		9FFF38302FAF7B34008DAC04 /* FavoritesContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF382F2FAF7B34008DAC04 /* FavoritesContract.swift */; };
 		9FFF38342FAF80CF008DAC04 /* FavoritesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF38332FAF80CF008DAC04 /* FavoritesPresenter.swift */; };
 		9FFF38382FAF8965008DAC04 /* FavoriteLeague.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF38372FAF8965008DAC04 /* FavoriteLeague.swift */; };
@@ -124,6 +125,7 @@
 		9FF4D4A42FB3A7E60029FFC9 /* PlayerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerCell.xib; sourceTree = "<group>"; };
 		9FF4D4A72FB3B0B70029FFC9 /* TeamDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailsPresenter.swift; sourceTree = "<group>"; };
 		9FF4D4A92FB3B5C80029FFC9 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
+		9FF4D4AB2FB3EBAC0029FFC9 /* Contract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contract.swift; sourceTree = "<group>"; };
 		9FFF382F2FAF7B34008DAC04 /* FavoritesContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesContract.swift; sourceTree = "<group>"; };
 		9FFF38332FAF80CF008DAC04 /* FavoritesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesPresenter.swift; sourceTree = "<group>"; };
 		9FFF38372FAF8965008DAC04 /* FavoriteLeague.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteLeague.swift; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 		9FF4D49C2FB39E9A0029FFC9 /* Contract */ = {
 			isa = PBXGroup;
 			children = (
+				9FF4D4AB2FB3EBAC0029FFC9 /* Contract.swift */,
 			);
 			path = Contract;
 			sourceTree = "<group>";
@@ -682,6 +685,7 @@
 				9FF4D4A82FB3B0B70029FFC9 /* TeamDetailsPresenter.swift in Sources */,
 				9FDA80BF2FAB475900599462 /* League.swift in Sources */,
 				9FFF38302FAF7B34008DAC04 /* FavoritesContract.swift in Sources */,
+				9FF4D4AC2FB3EBAD0029FFC9 /* Contract.swift in Sources */,
 				9F89D1072FAA794000C01EFD /* ApiManager.swift in Sources */,
 				9FDA80C92FAB523600599462 /* ApiManagerImp.swift in Sources */,
 				9FDA80C12FAB478E00599462 /* Fixture.swift in Sources */,

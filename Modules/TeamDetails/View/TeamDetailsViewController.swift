@@ -7,20 +7,20 @@
 
 import UIKit
 
-protocol TeamDetailsViewProtocol: AnyObject {
-    
-}
 
 class TeamDetailsViewController: UICollectionViewController {
     var teamId: Int!
+    var sport: Sport!
     
     var presenter : TeamDetailsPresenterProtocol!
+    private let spinner = UIActivityIndicatorView(style: .large)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = TeamDetailsPresenter(view: self)
         setupCollectionView()
-        
+        setupSpinner()
+        presenter.fetchData(sport: sport, teamId: teamId)
     }
     
     func setupCollectionView() {
@@ -40,6 +40,12 @@ class TeamDetailsViewController: UICollectionViewController {
         collectionView.register(TeamsHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: K.header)
     }
 
+    private func setupSpinner() {
+        spinner.color = UIColor(red: 255/255, green: 126/255, blue: 33/255, alpha: 1.0)
+        spinner.hidesWhenStopped = true
+        spinner.center = view.center
+        view.addSubview(spinner)
+    }
 }
 
 extension TeamDetailsViewController {
@@ -148,6 +154,38 @@ extension TeamDetailsViewController {
 }
 
 extension TeamDetailsViewController: TeamDetailsViewProtocol {
-
+    func reloadData() {
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+    }
     
+    func showLoading() {
+        DispatchQueue.main.async {
+            self.spinner.startAnimating()
+        }
+    }
+    
+    func hideLoading() {
+        DispatchQueue.main.async {
+            self.spinner.stopAnimating()
+        }
+    }
+    
+    func showError(message: String) {
+        let alert = UIAlertController(
+            title: "Error",
+            message: message,
+            preferredStyle: .alert
+        )
+
+        let action = UIAlertAction(
+            title: "OK",
+            style: .default
+        )
+
+        alert.addAction(action)
+
+        present(alert, animated: true)
+    }
 }

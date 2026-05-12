@@ -126,25 +126,9 @@ class ApiManagerImp: ApiManager {
         fetch(sport, params: params, completion: completion)
     }
     
-//    func fetchPastTeamFixtures(
-//        for sport: Sport,
-//        teamId: Int,
-//        leagueId: Int? = nil,
-//        completion: @escaping (Result<[Fixture], AllSportsError>) -> Void
-//    ) {
-//        let today = Date()
-//        let pastTwoWeeks = Calendar.current.date(byAdding: .day, value: -14, to: today)!
-//
-//        let from = formatter.string(from: pastTwoWeeks)
-//        let to = formatter.string(from: today)
-//
-//        fetchTeamFixtures(for: sport, teamId: teamId, leagueId: leagueId, from: from, to: to, completion: completion)
-//    }
-    
     func fetchTeamDetailsFixtures(
         for sport: Sport,
         teamId: Int,
-        leagueId: Int? = nil,
         completion: @escaping (Result<[Fixture], AllSportsError>) -> Void
     ) {
         let today = Date()
@@ -154,27 +138,22 @@ class ApiManagerImp: ApiManager {
         let from = formatter.string(from: pastTwoWeeks)
         let to = formatter.string(from: nextTwoWeeks)
         
-        fetchTeamFixtures(for: sport, teamId: teamId, leagueId: leagueId, from: from, to: to, completion: completion)
+        fetchTeamFixtures(for: sport, teamId: teamId, from: from, to: to, completion: completion)
     }
     
     private func fetchTeamFixtures(
         for sport: Sport,
         teamId: Int,
-        leagueId: Int? = nil,
         from: String,
         to: String,
         completion: @escaping (Result<[Fixture], AllSportsError>) -> Void
     ) {
-        var params: [String: String] = [
+        let params: [String: String] = [
             "met": "Fixtures",
             "teamId": String(teamId),
             "from": from,
             "to": to
         ]
-
-        if let leagueId = leagueId {
-            params["leagueId"] = String(leagueId)
-        }
         
         fetch(sport, params: params, completion: completion)
     }
