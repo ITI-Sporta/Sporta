@@ -22,4 +22,8 @@ struct TeamDetails: Codable, Identifiable {
         case players
         case coaches
     }
+    
+    static func getEmptyTeamDetails() -> TeamDetails {
+        TeamDetails(id: 0, name: "", logo: "", players: [], coaches: [])
+    }
 }

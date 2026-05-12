@@ -126,22 +126,22 @@ class ApiManagerImp: ApiManager {
         fetch(sport, params: params, completion: completion)
     }
     
-    func fetchPastTeamFixtures(
-        for sport: Sport,
-        teamId: Int,
-        leagueId: Int? = nil,
-        completion: @escaping (Result<[Fixture], AllSportsError>) -> Void
-    ) {
-        let today = Date()
-        let pastTwoWeeks = Calendar.current.date(byAdding: .day, value: -14, to: today)!
-        
-        let from = formatter.string(from: pastTwoWeeks)
-        let to = formatter.string(from: today)
-        
-        fetchTeamFixtures(for: sport, teamId: teamId, leagueId: leagueId, from: from, to: to, completion: completion)
-    }
+//    func fetchPastTeamFixtures(
+//        for sport: Sport,
+//        teamId: Int,
+//        leagueId: Int? = nil,
+//        completion: @escaping (Result<[Fixture], AllSportsError>) -> Void
+//    ) {
+//        let today = Date()
+//        let pastTwoWeeks = Calendar.current.date(byAdding: .day, value: -14, to: today)!
+//
+//        let from = formatter.string(from: pastTwoWeeks)
+//        let to = formatter.string(from: today)
+//
+//        fetchTeamFixtures(for: sport, teamId: teamId, leagueId: leagueId, from: from, to: to, completion: completion)
+//    }
     
-    func fetchUpcomingTeamFixtures(
+    func fetchTeamDetailsFixtures(
         for sport: Sport,
         teamId: Int,
         leagueId: Int? = nil,
@@ -149,8 +149,9 @@ class ApiManagerImp: ApiManager {
     ) {
         let today = Date()
         let nextTwoWeeks = Calendar.current.date(byAdding: .day, value: 14, to: today)!
+        let pastTwoWeeks = Calendar.current.date(byAdding: .day, value: -14, to: today)!
         
-        let from = formatter.string(from: today)
+        let from = formatter.string(from: pastTwoWeeks)
         let to = formatter.string(from: nextTwoWeeks)
         
         fetchTeamFixtures(for: sport, teamId: teamId, leagueId: leagueId, from: from, to: to, completion: completion)

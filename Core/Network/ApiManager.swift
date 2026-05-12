@@ -25,13 +25,7 @@ protocol ApiManager {
         leagueId: Int,
         completion: @escaping (Result<[Team], AllSportsError>) -> Void
     )
-    func fetchPastTeamFixtures(
-        for sport: Sport,
-        teamId: Int,
-        leagueId: Int?,
-        completion: @escaping (Result<[Fixture], AllSportsError>) -> Void
-    )
-    func fetchUpcomingTeamFixtures(
+    func fetchTeamDetailsFixtures(
         for sport: Sport,
         teamId: Int,
         leagueId: Int?,

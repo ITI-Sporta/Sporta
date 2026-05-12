@@ -8,7 +8,7 @@
 import Foundation
 
 struct Player: Codable, Identifiable {
-    var id: UUID { UUID() }
+    var id: UUID = UUID()
 
     let name: String?
     let image: String?
@@ -22,5 +22,9 @@ struct Player: Codable, Identifiable {
         case number = "player_number"
         case type = "player_type"
         case age = "player_age"
+    }
+    
+    static func getEmptyPlayrt() -> Player {
+        Player(name: nil, image: nil, number: nil, type: nil, age: nil)
     }
 }
