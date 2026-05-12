@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell contentMode="scaleToFill" id="KGk-i7-Jjw" customClass="MatchCell" customModule="Sporta" customModuleProvider="target">
+        <collectionViewCell contentMode="scaleToFill" reuseIdentifier="MatchCell" id="KGk-i7-Jjw" customClass="MatchCell" customModule="Sporta" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="361" height="180"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="H2p-sc-9uM">
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="361" height="180"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
@@ -21,13 +20,13 @@
                         <rect key="frame" x="12" y="8" width="337" height="164"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Premier League" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="leagueLabel">
-                                <rect key="frame" x="12" y="12" width="98" height="16"/>
+                                <rect key="frame" x="12" y="12" width="99" height="16"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Finished" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="statusLabel">
-                                <rect key="frame" x="273" y="12" width="52" height="16"/>
+                                <rect key="frame" x="272.5" y="12" width="52.5" height="16"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                                 <color key="textColor" red="1" green="0.4941176471" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -36,17 +35,17 @@
                                 <rect key="frame" x="12" y="40" width="313" height="84"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="homeStack">
-                                        <rect key="frame" x="0.0" y="0.0" width="99" height="84"/>
+                                        <rect key="frame" x="0.0" y="4.5" width="99" height="75"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="homeLogo">
-                                                <rect key="frame" x="24" y="0.0" width="50" height="50"/>
+                                                <rect key="frame" x="24.5" y="0.0" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="hHome"/>
                                                     <constraint firstAttribute="width" constant="50" id="wHome"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Home" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="homeName">
-                                                <rect key="frame" x="0.0" y="58" width="99" height="26"/>
+                                                <rect key="frame" x="29.5" y="58" width="40.5" height="17"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                 <color key="textColor" red="0.078431372550000003" green="0.15686274510000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -54,23 +53,23 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="2 - 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="scoreLabel">
-                                        <rect key="frame" x="107" y="29" width="99" height="26"/>
+                                        <rect key="frame" x="107" y="29.5" width="99" height="25.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="black" pointSize="21"/>
                                         <color key="textColor" red="0.078431372550000003" green="0.15686274510000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="awayStack">
-                                        <rect key="frame" x="214" y="0.0" width="99" height="84"/>
+                                        <rect key="frame" x="214" y="4.5" width="99" height="75"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="awayLogo">
-                                                <rect key="frame" x="24" y="0.0" width="50" height="50"/>
+                                                <rect key="frame" x="24.5" y="0.0" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="hAway"/>
                                                     <constraint firstAttribute="width" constant="50" id="wAway"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Away" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awayName">
-                                                <rect key="frame" x="0.0" y="58" width="99" height="26"/>
+                                                <rect key="frame" x="31" y="58" width="37" height="17"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                 <color key="textColor" red="0.078431372550000003" green="0.15686274510000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -90,27 +89,26 @@
                         <constraints>
                             <constraint firstItem="leagueLabel" firstAttribute="top" secondItem="cardView" secondAttribute="top" constant="12" id="c1"/>
                             <constraint firstItem="footerLabel" firstAttribute="trailing" secondItem="mainStack" secondAttribute="trailing" id="c10"/>
-                            <constraint firstItem="cardView" firstAttribute="bottom" secondItem="footerLabel" secondAttribute="bottom" constant="12" id="c11"/>
+                            <constraint firstAttribute="bottom" secondItem="footerLabel" secondAttribute="bottom" constant="12" id="c11"/>
                             <constraint firstItem="leagueLabel" firstAttribute="leading" secondItem="cardView" secondAttribute="leading" constant="12" id="c2"/>
-                            <constraint firstItem="cardView" firstAttribute="trailing" secondItem="statusLabel" secondAttribute="trailing" constant="12" id="c3"/>
+                            <constraint firstAttribute="trailing" secondItem="statusLabel" secondAttribute="trailing" constant="12" id="c3"/>
                             <constraint firstItem="statusLabel" firstAttribute="top" secondItem="leagueLabel" secondAttribute="top" id="c4"/>
                             <constraint firstItem="mainStack" firstAttribute="top" secondItem="leagueLabel" secondAttribute="bottom" constant="12" id="c5"/>
                             <constraint firstItem="mainStack" firstAttribute="leading" secondItem="cardView" secondAttribute="leading" constant="12" id="c6"/>
-                            <constraint firstItem="cardView" firstAttribute="trailing" secondItem="mainStack" secondAttribute="trailing" constant="12" id="c7"/>
+                            <constraint firstAttribute="trailing" secondItem="mainStack" secondAttribute="trailing" constant="12" id="c7"/>
                             <constraint firstItem="footerLabel" firstAttribute="top" secondItem="mainStack" secondAttribute="bottom" constant="12" id="c8"/>
                             <constraint firstItem="footerLabel" firstAttribute="leading" secondItem="mainStack" secondAttribute="leading" id="c9"/>
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                <constraints>
-                    <constraint firstItem="H2p-sc-9uM" firstAttribute="bottom" secondItem="cardView" secondAttribute="bottom" constant="8" id="m1"/>
-                    <constraint firstItem="cardView" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="m2"/>
-                    <constraint firstItem="cardView" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="m3"/>
-                    <constraint firstItem="H2p-sc-9uM" firstAttribute="trailing" secondItem="cardView" secondAttribute="trailing" constant="12" id="m4"/>
-                </constraints>
             </view>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="cardView" secondAttribute="bottom" constant="8" id="m1"/>
+                <constraint firstItem="cardView" firstAttribute="top" secondItem="KGk-i7-Jjw" secondAttribute="top" constant="8" id="m2"/>
+                <constraint firstItem="cardView" firstAttribute="leading" secondItem="KGk-i7-Jjw" secondAttribute="leading" constant="12" id="m3"/>
+                <constraint firstAttribute="trailing" secondItem="cardView" secondAttribute="trailing" constant="12" id="m4"/>
+            </constraints>
             <connections>
                 <outlet property="awayLogo" destination="awayLogo" id="out1"/>
                 <outlet property="awayName" destination="awayName" id="out2"/>
@@ -124,6 +122,7 @@
                 <outlet property="scoreLabel" destination="scoreLabel" id="out7"/>
                 <outlet property="statusLabel" destination="statusLabel" id="out8"/>
             </connections>
+            <point key="canvasLocation" x="133" y="92"/>
         </collectionViewCell>
     </objects>
     <resources>

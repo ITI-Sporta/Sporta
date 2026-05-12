@@ -17,6 +17,8 @@ struct Fixture: Codable, Identifiable {
     let awayTeamName: String?
     let homeTeamLogo: String?
     let awayTeamLogo: String?
+    let eventHomeTeamLogo: String?
+    let eventAwayTeamLogo: String?
     let homeScore: String?
     let leagueName: String?
     let leagueRound: String?
@@ -30,6 +32,8 @@ struct Fixture: Codable, Identifiable {
         case awayTeamName = "event_away_team"
         case homeTeamLogo = "home_team_logo"
         case awayTeamLogo = "away_team_logo"
+        case eventHomeTeamLogo = "event_home_team_logo"
+        case eventAwayTeamLogo = "event_away_team_logo"
         case homeScore = "event_final_result"
         case leagueName = "league_name"
         case leagueRound = "league_round"

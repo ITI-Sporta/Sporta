@@ -100,7 +100,7 @@ class MatchCell: UICollectionViewCell {
             scoreLabel.text       = "VS"
         }
         
-        homeLogo.setImage(fixture.homeTeamLogo ?? "")
-        awayLogo.setImage(fixture.awayTeamLogo ?? "")
+        homeLogo.setImage(fixture.homeTeamLogo ?? fixture.eventHomeTeamLogo ?? "")
+        awayLogo.setImage(fixture.awayTeamLogo ?? fixture.eventAwayTeamLogo ?? "")
     }
 }
