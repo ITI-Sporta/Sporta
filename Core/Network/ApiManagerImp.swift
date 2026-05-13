@@ -158,32 +158,6 @@ class ApiManagerImp: ApiManager {
         
         fetch(sport, params: params, completion: completion)
     }
-    
-    func fetchStandings(
-        for sport: Sport,
-        leagueId: Int,
-        completion: @escaping (Result<StandingsResult, AllSportsError>) -> Void
-    ) {
-        let params: [String: String] = [
-            "met":      "Standings",
-            "leagueId": String(leagueId)
-        ]
-        fetch(sport, params: params, completion: completion)
-    }
-    
-    func fetchH2H(
-        for sport: Sport,
-        firstTeamId: Int,
-        secondTeamId: Int,
-        completion: @escaping (Result<H2HResult, AllSportsError>) -> Void
-    ) {
-        let params: [String: String] = [
-            "met":          "H2H",
-            "firstTeamId":  String(firstTeamId),
-            "secondTeamId": String(secondTeamId)
-        ]
-        fetch(sport, params: params, completion: completion)
-    }
 
     func fetchTeamDetails(
         for sport: Sport,
