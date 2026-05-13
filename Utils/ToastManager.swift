@@ -27,7 +27,7 @@ enum ToastType {
         case .success:  return "checkmark.circle.fill"
         case .error:    return "xmark.circle.fill"
         case .info:     return "info.circle.fill"
-        case .favorite: return "star.fill"
+        case .favorite: return "heart.fill"
         }
     }
 }

@@ -123,7 +123,7 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
             
             self.upcomingFixtures = upcoming.filter { !$0.isLive && !$0.isFinished}
             self.liveFixtures     = upcoming.filter { $0.isLive }
-            self.pastFixtures     = past
+            self.pastFixtures     = past.filter { !$0.isLive }
             self.teams            = teams
             
             self.view?.reloadFixtures()
@@ -154,7 +154,7 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
             let success = db.addFavoriteLeague(league.toFavorite(sport))
             if success {
                 view?.setFavoriteIcon(systemName: "heart.fill")
-                view?.showToast(type: .success, message: "Added \(league.name) to favorites")
+                view?.showToast(type: .favorite, message: "Added \(league.name) to favorites")
             } else {
                 view?.showToast(type: .error, message: "Unable to add \(league.name) to favorites")
             }

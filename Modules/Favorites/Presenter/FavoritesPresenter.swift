@@ -6,8 +6,7 @@
 //
 
 import Foundation
-
-
+import SystemConfiguration
 class FavoritesPresenter: FavoritesPresenterProtocol {
     
     private weak var view: FavoritesViewProtocol?
@@ -46,5 +45,9 @@ class FavoritesPresenter: FavoritesPresenterProtocol {
     func reloadData() {
         leagues = db.getAllFavoriteLeagues()
         view?.reloadData()
+    }
+    
+    func isConnected() -> Bool {
+        return NetworkMonitor.shared.isConnected
     }
 }

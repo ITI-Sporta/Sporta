@@ -12,6 +12,7 @@ protocol FavoritesPresenterProtocol {
     func delete(league: FavoriteLeague)
     func insert(league: FavoriteLeague)
     func reloadData()
+    func isConnected() -> Bool
 }
 
 protocol FavoritesViewProtocol: AnyObject {
