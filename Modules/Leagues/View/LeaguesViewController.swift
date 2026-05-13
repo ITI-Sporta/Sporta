@@ -114,13 +114,16 @@ extension LeaguesViewController: UITableViewDelegate, UITableViewDataSource {
         ) as? LeagueDetailsViewController else {
             return
         }
-        vc.hidesBottomBarWhenPushed = true
-        vc.currentLeague = selectedLeague
-        vc.sport = sport
+        if(NetworkMonitor.shared.isConnected){
+            vc.hidesBottomBarWhenPushed = true
+            vc.currentLeague = selectedLeague
+            vc.sport = sport
+            navigationController?.pushViewController(vc, animated: true)
+        } else {
+            showError("No internet connection")
+        }
         
-        print("click on league")
-
-        navigationController?.pushViewController(vc, animated: true)
+        
         tableView.deselectRow(at: indexPath, animated: false)
     }
     

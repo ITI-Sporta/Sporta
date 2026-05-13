@@ -117,9 +117,13 @@ class LeagueDetailsViewController: UIViewController {
         UICollectionViewCompositionalLayout { [weak self] sectionIndex, _ in
             guard let self = self, let section = LeagueDetailSection(rawValue: sectionIndex) else { return nil }
             switch section {
-            case .header:   return self.createHeaderSection()
-            case .segment:  return self.createSegmentSection()
-            case .teams:    return self.createTeamsSection()
+            case .header: return self.createHeaderSection()
+            case .segment: return self.createSegmentSection()
+            case .teams:
+                if self.presenter.numberOfTeams() == 0 {
+                    return nil
+                }
+            return self.createTeamsSection()
             case .fixtures: return self.createFixturesSection()
             }
         }
@@ -297,6 +301,14 @@ extension LeagueDetailsViewController: LeagueDetailsViewProtocol {
             alert.addAction(UIAlertAction(title: "OK", style: .cancel))
             self.present(alert, animated: true)
         }
+    }
+    
+    func showToast(type: ToastType, message: String) {
+        ToastManager.shared.show(
+            message: message,
+            type: type,
+            in: view
+        )
     }
 }
 

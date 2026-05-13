@@ -33,4 +33,5 @@ protocol LeagueDetailsViewProtocol: AnyObject {
     func reloadTeams()
     func showError(message: String)
     func setFavoriteIcon(systemName: String)
+    func showToast(type:ToastType,message:String)
 }

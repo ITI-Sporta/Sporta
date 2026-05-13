@@ -22,7 +22,7 @@ struct Fixture: Codable, Identifiable {
     let homeScore: String?
     let leagueName: String?
     let leagueRound: String?
-
+    let eventLive:String?
     enum CodingKeys: String, CodingKey {
         case id = "event_key"
         case date = "event_date"
@@ -37,6 +37,7 @@ struct Fixture: Codable, Identifiable {
         case homeScore = "event_final_result"
         case leagueName = "league_name"
         case leagueRound = "league_round"
+        case eventLive = "event_live"
     }
 
     var scoreParts: (home: String, away: String)? {
@@ -47,5 +48,5 @@ struct Fixture: Codable, Identifiable {
     }
 
     var isFinished: Bool { status == "Finished" }
-    var isLive: Bool { status == "1H" || status == "2H" || status == "HT" || status == "Q1" || status == "Q2" || status == "Q3" || status == "Q4"}
+    var isLive: Bool { eventLive == "1" || status == "Q1" || status == "Q2" || status == "Q3" || status == "Q4"}
 }

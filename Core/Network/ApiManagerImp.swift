@@ -77,9 +77,9 @@ class ApiManagerImp: ApiManager {
         completion: @escaping (Result<[Fixture], AllSportsError>) -> Void
     ) {
         let today = Date()
-        let pastTwoWeeks = Calendar.current.date(byAdding: .day, value: -14, to: today)!
+        let past = Calendar.current.date(byAdding: .month, value: -3, to: today)!
         
-        let from = formatter.string(from: pastTwoWeeks)
+        let from = formatter.string(from: past)
         let to = formatter.string(from: today)
         
         fetchFixtures(for: sport, leagueId:leagueId,from:from,to:to ,completion:completion)
@@ -91,10 +91,9 @@ class ApiManagerImp: ApiManager {
         completion: @escaping (Result<[Fixture], AllSportsError>) -> Void
     ) {
         let today = Date()
-        let nextTwoWeeks = Calendar.current.date(byAdding: .day, value: 14, to: today)!
-        
+        let future = Calendar.current.date(byAdding: .month, value: 3, to: today)!
         let from = formatter.string(from: today)
-        let to = formatter.string(from: nextTwoWeeks)
+        let to = formatter.string(from: future)
         
         fetchFixtures(for: sport, leagueId: leagueId, from: from, to: to, completion: completion)
     }
@@ -133,11 +132,11 @@ class ApiManagerImp: ApiManager {
         completion: @escaping (Result<[Fixture], AllSportsError>) -> Void
     ) {
         let today = Date()
-        let nextTwoWeeks = Calendar.current.date(byAdding: .day, value: 14, to: today)!
-        let pastTwoWeeks = Calendar.current.date(byAdding: .day, value: -14, to: today)!
+        let future = Calendar.current.date(byAdding: .month, value: 3, to: today)!
+        let past = Calendar.current.date(byAdding: .month, value: -3, to: today)!
         
-        let from = formatter.string(from: pastTwoWeeks)
-        let to = formatter.string(from: nextTwoWeeks)
+        let from = formatter.string(from: past)
+        let to = formatter.string(from: future)
         
         fetchTeamFixtures(for: sport, teamId: teamId, from: from, to: to, completion: completion)
     }
@@ -197,4 +196,5 @@ class ApiManagerImp: ApiManager {
 
         fetch(sport, params: params, completion: completion)
     }
+    
 }

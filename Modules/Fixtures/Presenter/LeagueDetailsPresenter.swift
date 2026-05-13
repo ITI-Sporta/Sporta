@@ -76,50 +76,58 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
         view?.showLoading()
         
         let group = DispatchGroup()
-        var fetchError: AllSportsError?
+        
+        var upcoming: [Fixture] = []
+        var past: [Fixture] = []
+        var teams: [Team] = []
+        
+        var errors: [AllSportsError] = []
         
         group.enter()
-        apiManager.fetchUpcomingFixtures(for: sport, leagueId: leagueId) { [weak self] result in
+        apiManager.fetchUpcomingFixtures(for: sport, leagueId: leagueId) {result in
             defer { group.leave() }
             switch result {
             case .success(let fixtures):
-                self?.upcomingFixtures = fixtures.filter { !$0.isLive }
-                self?.liveFixtures     = fixtures.filter { $0.isLive }
+                upcoming = fixtures
             case .failure(let error):
-                fetchError = error
+                errors.append(error)
             }
         }
         
         group.enter()
-        apiManager.fetchPastFixtures(for: sport, leagueId: leagueId) { [weak self] result in
+        apiManager.fetchPastFixtures(for: sport, leagueId: leagueId) {result in
             defer { group.leave() }
             switch result {
             case .success(let fixtures):
-                self?.pastFixtures = fixtures.filter { $0.isFinished }
+                past = fixtures
             case .failure(let error):
-                fetchError = error
+                errors.append(error)
             }
         }
         
         group.enter()
-        apiManager.fetchTeams(for: sport, leagueId: leagueId) { [weak self] result in
+        apiManager.fetchTeams(for: sport, leagueId: leagueId) {result in
             defer { group.leave() }
             switch result {
-            case .success(let teams):
-                self?.teams = teams
+            case .success(let resultTeams):
+                teams = resultTeams
             case .failure(let error):
-                fetchError = error
+                errors.append(error)
             }
         }
         
         group.notify(queue: .main) { [weak self] in
-            self?.view?.hideLoading()
-            if let error = fetchError {
-                self?.view?.showError(message: error.localizedDescription)
-            } else {
-                self?.view?.reloadFixtures()
-                self?.view?.reloadTeams()
-            }
+            guard let self = self else { return }
+            
+            self.view?.hideLoading()
+            
+            self.upcomingFixtures = upcoming.filter { !$0.isLive && !$0.isFinished}
+            self.liveFixtures     = upcoming.filter { $0.isLive }
+            self.pastFixtures     = past.filter { !$0.isLive }
+            self.teams            = teams
+            
+            self.view?.reloadFixtures()
+            self.view?.reloadTeams()
         }
     }
     
@@ -135,11 +143,23 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
     func toggleIsFavorite(league: League) {
         let isFavorite = db.isFavoriteLeague(id: league.id)
         if isFavorite {
-            let _ = db.deleteFavoriteLeague(by: league.id)
-            view?.setFavoriteIcon(systemName: "heart")
+            let success = db.deleteFavoriteLeague(by: league.id)
+            if success {
+                view?.setFavoriteIcon(systemName: "heart")
+                view?.showToast(type: .info, message: "Deleted \(league.name) from favorites")
+            } else {
+                view?.showToast(type: .error, message: "Unable to delete \(league.name) from favorites")
+            }
         } else {
-            let _ = db.addFavoriteLeague(league.toFavorite(sport))
-            view?.setFavoriteIcon(systemName: "heart.fill")
+            let success = db.addFavoriteLeague(league.toFavorite(sport))
+            if success {
+                view?.setFavoriteIcon(systemName: "heart.fill")
+                view?.showToast(type: .favorite, message: "Added \(league.name) to favorites")
+            } else {
+                view?.showToast(type: .error, message: "Unable to add \(league.name) to favorites")
+            }
+            
+            
         }
     }
     

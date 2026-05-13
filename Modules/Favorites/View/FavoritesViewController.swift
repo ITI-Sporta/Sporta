@@ -42,8 +42,13 @@ extension FavoritesViewController: FavoritesViewProtocol {
         tableView.reloadData()
     }
     
-    func show(title: String, message: String) {
-        // TODO: Show something like a SnackBar
+    func show(type: ToastType, message: String) {
+        
+        ToastManager.shared.show(
+            message: message,
+            type: type,
+            in: view
+        )
     }
     
 }
@@ -73,11 +78,17 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
         ) as? LeagueDetailsViewController else {
             return
         }
-        vc.hidesBottomBarWhenPushed = true
-        vc.currentLeague = selectedLeague.toLeague()
-        vc.sport = selectedLeague.sport
+        if(presenter.isConnected()){
+            vc.hidesBottomBarWhenPushed = true
+            vc.currentLeague = selectedLeague.toLeague()
+            vc.sport = selectedLeague.sport
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        else {
+            show(type: .error, message: "No internet connection")
+        }
 
-        navigationController?.pushViewController(vc, animated: true)
+        
         tableView.deselectRow(at: indexPath, animated: false)
     }
     
