@@ -135,11 +135,23 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
     func toggleIsFavorite(league: League) {
         let isFavorite = db.isFavoriteLeague(id: league.id)
         if isFavorite {
-            let _ = db.deleteFavoriteLeague(by: league.id)
-            view?.setFavoriteIcon(systemName: "heart")
+            let success = db.deleteFavoriteLeague(by: league.id)
+            if success {
+                view?.setFavoriteIcon(systemName: "heart")
+                view?.showToast(type: .info, message: "Deleted \(league.name) from favorites")
+            } else {
+                view?.showToast(type: .error, message: "Unable to delete \(league.name) from favorites")
+            }
         } else {
-            let _ = db.addFavoriteLeague(league.toFavorite(sport))
-            view?.setFavoriteIcon(systemName: "heart.fill")
+            let success = db.addFavoriteLeague(league.toFavorite(sport))
+            if success {
+                view?.setFavoriteIcon(systemName: "heart.fill")
+                view?.showToast(type: .success, message: "Added \(league.name) to favorites")
+            } else {
+                view?.showToast(type: .error, message: "Unable to add \(league.name) to favorites")
+            }
+            
+            
         }
     }
     

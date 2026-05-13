@@ -27,9 +27,9 @@ class FavoritesPresenter: FavoritesPresenterProtocol {
             leagues.removeAll {
                 $0.id == league.id
             }
-            view?.show(title: "Success", message: "Deleted \(league.name) from favorites")
+            view?.show(type: .info, message: "Deleted \(league.name) from favorites")
         } else {
-            view?.show(title: "Error", message: "Unable to delete \(league.name) from favorites")
+            view?.show(type: .error, message: "Unable to delete \(league.name) from favorites")
         }
     }
     
@@ -37,9 +37,9 @@ class FavoritesPresenter: FavoritesPresenterProtocol {
         let success = db.addFavoriteLeague(league)
         
         if success {
-            view?.show(title: "Success", message: "Added \(league.name) to favorites")
+            view?.show(type: .info, message: "Added \(league.name) to favorites")
         } else {
-            view?.show(title: "Error", message: "Unable to add \(league.name) to favorites")
+            view?.show(type: .error, message: "Unable to add \(league.name) to favorites")
         }
     }
     

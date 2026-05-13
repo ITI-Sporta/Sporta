@@ -16,5 +16,5 @@ protocol FavoritesPresenterProtocol {
 
 protocol FavoritesViewProtocol: AnyObject {
     func reloadData()
-    func show(title: String, message: String)
+    func show(type: ToastType, message: String)
 }

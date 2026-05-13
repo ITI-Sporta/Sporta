@@ -298,6 +298,14 @@ extension LeagueDetailsViewController: LeagueDetailsViewProtocol {
             self.present(alert, animated: true)
         }
     }
+    
+    func showToast(type: ToastType, message: String) {
+        ToastManager.shared.show(
+            message: message,
+            type: type,
+            in: view
+        )
+    }
 }
 
 // MARK: - MatchCellDelegate

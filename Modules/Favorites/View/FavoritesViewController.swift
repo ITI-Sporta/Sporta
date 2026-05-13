@@ -42,8 +42,13 @@ extension FavoritesViewController: FavoritesViewProtocol {
         tableView.reloadData()
     }
     
-    func show(title: String, message: String) {
-        // TODO: Show something like a SnackBar
+    func show(type: ToastType, message: String) {
+        
+        ToastManager.shared.show(
+            message: message,
+            type: type,
+            in: view
+        )
     }
     
 }
