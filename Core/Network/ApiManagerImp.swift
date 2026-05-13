@@ -43,6 +43,7 @@ class ApiManagerImp: ApiManager {
         AF.request(url, parameters: parameters)
             .validate()
             .responseData { response in
+                print("ApiManager: got response!")
                 switch response.result {
                 case .success(let rawData):
                     do {

@@ -277,7 +277,7 @@
         <!--Team Details-->
         <scene sceneID="61a-Lk-8hG">
             <objects>
-                <collectionViewController id="uXF-py-ZJf" customClass="TeamDetailsViewController" customModule="Sporta" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="TeamDetailsViewController" id="uXF-py-ZJf" customClass="TeamDetailsViewController" customModule="Sporta" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="IBx-lM-JSq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

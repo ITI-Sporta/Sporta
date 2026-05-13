@@ -105,8 +105,9 @@ extension TeamDetailsViewController {
     
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
+        section.boundarySupplementaryItems = [makeHeader()]
         return section
-        
+
     }
     
     func playersSection() -> NSCollectionLayoutSection {
@@ -116,6 +117,7 @@ extension TeamDetailsViewController {
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuous
         section.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
+        section.boundarySupplementaryItems = [makeHeader()]
         return section
     }
     
@@ -127,30 +129,43 @@ extension TeamDetailsViewController {
         
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
-
+        section.boundarySupplementaryItems = [makeHeader()]
         return section
     }
     
-    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        print("header")
-        switch indexPath.section {
-        case 1:
-            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: K.header, for: indexPath) as! TeamsHeaderView
-            print("header")
-            header.setText("Players")
-            return header
-            
-        case 2:
-            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: K.header, for: indexPath) as! TeamsHeaderView
-            print("header")
-            header.setText("Fixtures")
-            return header
-            
-        default:
-            return UICollectionReusableView()
-        }
+    private func makeHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
+        let headerSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .absolute(32)
+        )
+        return NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top
+        )
     }
+}
 
+extension TeamDetailsViewController : UICollectionViewDelegateFlowLayout {
+    override func collectionView(_ collectionView: UICollectionView,
+                        viewForSupplementaryElementOfKind kind: String,
+                        at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(
+            ofKind: kind,
+            withReuseIdentifier: K.header,
+            for: indexPath
+        ) as! TeamsHeaderView
+        
+        switch indexPath.section {
+        case 0:
+            header.setText("Info")
+        case 1:
+            header.setText("Players")
+        default :
+            header.setText("Fixtures")
+        }
+        return header
+    }
 }
 
 extension TeamDetailsViewController: TeamDetailsViewProtocol {

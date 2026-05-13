@@ -117,6 +117,8 @@ extension LeaguesViewController: UITableViewDelegate, UITableViewDataSource {
         vc.hidesBottomBarWhenPushed = true
         vc.currentLeague = selectedLeague
         vc.sport = sport
+        
+        print("click on league")
 
         navigationController?.pushViewController(vc, animated: true)
         tableView.deselectRow(at: indexPath, animated: false)
