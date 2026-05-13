@@ -1,0 +1,12 @@
+{
+  "data" : [
+    {
+      "filename" : "Add to favorites.json",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
