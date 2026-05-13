@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lYm-NE-avb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -18,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="oUB-jy-RBe">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -52,7 +53,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1A-vW-XYZ">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C0N-T-VwG" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="709.5"/>
@@ -144,7 +145,7 @@
         <!--Main Tab Bar Controller-->
         <scene sceneID="YdN-Je-Yjd">
             <objects>
-                <tabBarController id="lYm-NE-avb" customClass="MainTabBarController" customModule="Sporta" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabBarController" id="lYm-NE-avb" customClass="MainTabBarController" customModule="Sporta" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fFn-1X-adu">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -166,7 +167,7 @@
                     <tabBarItem key="tabBarItem" title="Sports" image="sportscourt" catalog="system" selectedImage="sportscourt.fill" id="0Oy-oJ-M6P"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WdG-YB-CjZ">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -185,7 +186,7 @@
                     <tabBarItem key="tabBarItem" title="Favorites" image="heart" catalog="system" selectedImage="heart.fill" id="4DQ-vI-hd4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="63M-Wv-I8g">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -206,7 +207,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="347-EY-8FO">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sGG-Z0-7Z6"/>
@@ -316,13 +317,44 @@
         <!--Onboarding View Controller-->
         <scene sceneID="Xi4-RW-68I">
             <objects>
-                <viewController id="3u7-9R-OGs" customClass="OnboardingViewController" customModule="Sporta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnboardingViewController" id="3u7-9R-OGs" customClass="OnboardingViewController" customModule="Sporta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="b2d-Bg-qCu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wRl-em-eTg" customClass="PaperOnboarding" customModule="PaperOnboarding">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dYw-9w-YSJ">
+                                <rect key="frame" x="97" y="748" width="220" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="220" id="4Ex-9N-1f6"/>
+                                    <constraint firstAttribute="height" constant="50" id="eVq-5g-dU8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Get Started"/>
+                                <connections>
+                                    <action selector="getStartedTapped:" destination="3u7-9R-OGs" eventType="touchUpInside" id="Kx4-dl-bvO"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="8xU-4o-6RP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="wRl-em-eTg" firstAttribute="top" secondItem="b2d-Bg-qCu" secondAttribute="top" id="4Ih-DB-H3e"/>
+                            <constraint firstAttribute="bottom" secondItem="wRl-em-eTg" secondAttribute="bottom" id="B9X-p8-voC"/>
+                            <constraint firstItem="8xU-4o-6RP" firstAttribute="bottom" secondItem="dYw-9w-YSJ" secondAttribute="bottom" constant="64" id="IoK-88-2Mp"/>
+                            <constraint firstItem="dYw-9w-YSJ" firstAttribute="centerX" secondItem="8xU-4o-6RP" secondAttribute="centerX" id="PES-Rf-uq5"/>
+                            <constraint firstAttribute="trailing" secondItem="wRl-em-eTg" secondAttribute="trailing" id="TLI-Ru-p6R"/>
+                            <constraint firstItem="wRl-em-eTg" firstAttribute="leading" secondItem="b2d-Bg-qCu" secondAttribute="leading" id="W1n-p6-qEd"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="getStartedButton" destination="dYw-9w-YSJ" id="Fr2-7l-nlR"/>
+                        <outlet property="onboarding" destination="wRl-em-eTg" id="nit-0R-p14"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="geY-CC-QSD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -333,11 +365,11 @@
         <segue reference="ewc-di-WK3"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="heart" catalog="system" width="128" height="109"/>
-        <image name="heart.fill" catalog="system" width="128" height="109"/>
+        <image name="heart" catalog="system" width="128" height="107"/>
+        <image name="heart.fill" catalog="system" width="128" height="107"/>
         <image name="logo_icon" width="1024" height="932"/>
-        <image name="sportscourt" catalog="system" width="128" height="84"/>
-        <image name="sportscourt.fill" catalog="system" width="128" height="84"/>
+        <image name="sportscourt" catalog="system" width="128" height="83"/>
+        <image name="sportscourt.fill" catalog="system" width="128" height="83"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
