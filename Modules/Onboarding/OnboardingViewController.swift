@@ -11,9 +11,8 @@ import Lottie
 
 class OnboardingViewController: UIViewController {
     
-    // MARK: - Properties
     @IBOutlet weak var onboarding: PaperOnboarding!
-    private var lottieView      = LottieAnimationView()
+    private var lottieView = LottieAnimationView()
     @IBOutlet weak var getStartedButton: UIButton!
     
     private let animations = ["football_lottie", "league_lottie", "favorite_lottie"]
@@ -21,34 +20,47 @@ class OnboardingViewController: UIViewController {
     private var currentIndex = 0
     private var lottieSetup = false
     
-    // MARK: - Lifecycle
+    private var animationCache: [LottieAnimation] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = .white
+        
+        animationCache = animations.compactMap {
+            LottieAnimation.named($0)
+        }
+        
+        onboarding.frame = view.bounds
         onboarding.dataSource = self
-        onboarding.delegate   = self
+        onboarding.delegate = self
+        
         setupGetStartedButton()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
         guard !lottieSetup else { return }
+        
         lottieSetup = true
         setupLottie(index: 0)
     }
     
-    // MARK: - Setup
-    
     private func setupLottie(index: Int) {
-        guard index < animations.count else { return }
+        guard index < animationCache.count else { return }
         
         lottieView.stop()
         lottieView.removeFromSuperview()
         
-        lottieView = LottieAnimationView(asset: animations[index])
+        lottieView = LottieAnimationView(
+            animation: animationCache[index]
+        )
+        
         lottieView.translatesAutoresizingMaskIntoConstraints = false
         lottieView.contentMode = .scaleAspectFit
-        lottieView.loopMode   = .playOnce
-        lottieView.alpha      = 0
+        lottieView.loopMode = .playOnce
+        lottieView.alpha = 0
         
         view.addSubview(lottieView)
         
@@ -62,59 +74,72 @@ class OnboardingViewController: UIViewController {
         view.bringSubviewToFront(getStartedButton)
         
         lottieView.play()
+        
         UIView.animate(withDuration: 0.4) {
             self.lottieView.alpha = 1
         }
     }
     
     private func setupGetStartedButton() {
-        getStartedButton.backgroundColor  = .white
-        getStartedButton.setTitleColor(
-            UIColor(red: 255/255, green: 126/255, blue: 33/255, alpha: 1), for: .normal
-        )
-        getStartedButton.layer.cornerRadius = 25
-        getStartedButton.layer.shadowColor   = UIColor.black.cgColor
-        getStartedButton.layer.shadowOpacity = 0.15
-        getStartedButton.layer.shadowOffset  = CGSize(width: 0, height: 4)
-        getStartedButton.layer.shadowRadius  = 8
-        getStartedButton.alpha = 0
+        getStartedButton.backgroundColor = .white
         
+        getStartedButton.setTitleColor(
+            UIColor(red: 255/255, green: 126/255, blue: 33/255, alpha: 1),
+            for: .normal
+        )
+        
+        getStartedButton.layer.cornerRadius = 25
+        getStartedButton.layer.shadowColor = UIColor.black.cgColor
+        getStartedButton.layer.shadowOpacity = 0.15
+        getStartedButton.layer.shadowOffset = CGSize(width: 0, height: 4)
+        getStartedButton.layer.shadowRadius = 8
+        getStartedButton.alpha = 0
     }
     
-    // MARK: - Actions
     @IBAction func getStartedTapped(_ sender: UIButton){
         UserDefaults.standard.set(true, forKey: UserDefaultsKeys.hasSeenOnboarding)
+        
         guard let sceneDelegate = view.window?.windowScene?.delegate as? SceneDelegate else { return }
+        
         sceneDelegate.showMainApp()
     }
+    
     private func showGetStartedIfNeeded(index: Int) {
         let isLast = index == totalPages - 1
-        if(isLast){
+        
+        if isLast {
             UIView.animate(withDuration: 1.0) {
                 self.getStartedButton.alpha = 1
             }
         }
-        else{
+        else {
             UIView.animate(withDuration: 0.6) {
                 self.getStartedButton.alpha = 0
             }
         }
     }
-    
 }
 
-// MARK: - PaperOnboardingDataSource
 extension OnboardingViewController: PaperOnboardingDataSource {
     
-    func onboardingItemsCount() -> Int { totalPages }
+    func onboardingItemsCount() -> Int {
+        totalPages
+    }
     
     func onboardingItem(at index: Int) -> OnboardingItemInfo {
+        
         let colors: [UIColor] = [
             UIColor(red: 232/255, green: 234/255, blue: 238/255, alpha: 1.0),
             UIColor(red: 255/255, green: 240/255, blue: 230/255, alpha: 1.0),
             UIColor(red: 235/255, green: 242/255, blue: 255/255, alpha: 1.0)
         ]
-        let titles = ["Discover Sports", "Follow Leagues",  "Save Favorites"]
+        
+        let titles = [
+            "Discover Sports",
+            "Follow Leagues",
+            "Save Favorites"
+        ]
+        
         let descriptions = [
             "Browse football, basketball, tennis\nand more in one place.",
             "Explore leagues from every country\nand follow upcoming fixtures.",
@@ -135,7 +160,6 @@ extension OnboardingViewController: PaperOnboardingDataSource {
     }
 }
 
-// MARK: - PaperOnboardingDelegate
 extension OnboardingViewController: PaperOnboardingDelegate {
     
     func onboardingWillTransitonToIndex(_ index: Int) {
