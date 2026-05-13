@@ -32,6 +32,7 @@
 		9FDA80C52FAB4C5700599462 /* Standing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDA80C42FAB4C5700599462 /* Standing.swift */; };
 		9FDA80C72FAB4CB400599462 /* H2HResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDA80C62FAB4CB400599462 /* H2HResult.swift */; };
 		9FDA80C92FAB523600599462 /* ApiManagerImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDA80C82FAB523600599462 /* ApiManagerImp.swift */; };
+		9FEFADF22FB514A8000DB313 /* FakeApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEFADF12FB514A8000DB313 /* FakeApiManager.swift */; };
 		9FF4D4A12FB3A3A00029FFC9 /* TeamDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF4D49F2FB3A3A00029FFC9 /* TeamDetailCell.swift */; };
 		9FF4D4A22FB3A3A00029FFC9 /* TeamDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FF4D4A02FB3A3A00029FFC9 /* TeamDetailCell.xib */; };
 		9FF4D4A52FB3A7E60029FFC9 /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF4D4A32FB3A7E60029FFC9 /* PlayerCell.swift */; };
@@ -119,6 +120,7 @@
 		9FDA80C42FAB4C5700599462 /* Standing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Standing.swift; sourceTree = "<group>"; };
 		9FDA80C62FAB4CB400599462 /* H2HResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H2HResult.swift; sourceTree = "<group>"; };
 		9FDA80C82FAB523600599462 /* ApiManagerImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManagerImp.swift; sourceTree = "<group>"; };
+		9FEFADF12FB514A8000DB313 /* FakeApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeApiManager.swift; sourceTree = "<group>"; };
 		9FF4D49F2FB3A3A00029FFC9 /* TeamDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailCell.swift; sourceTree = "<group>"; };
 		9FF4D4A02FB3A3A00029FFC9 /* TeamDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeamDetailCell.xib; sourceTree = "<group>"; };
 		9FF4D4A32FB3A7E60029FFC9 /* PlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				9F4F1D562FA917F800936107 /* ApiManagerTests.swift */,
+				9FEFADF12FB514A8000DB313 /* FakeApiManager.swift */,
 			);
 			path = SportaTests;
 			sourceTree = "<group>";
@@ -730,6 +733,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F4F1D572FA917F800936107 /* ApiManagerTests.swift in Sources */,
+				9FEFADF22FB514A8000DB313 /* FakeApiManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
