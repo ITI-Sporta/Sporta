@@ -38,4 +38,4 @@ The app allows users to browse different sports leagues, view league details, up
 | Member Name | Tasks |
 |-------------|-------|
 | Mohamed Ayman | Setup Storyboard & navigation, Sports Screen , League Details Screen , Splash && Onboarding, Provide Toasts & Network Monitor, Enhance Api |
-| Hossam Elgammal | Setup API & Data Core, Team Details Screen, Favorite Screen, Leagues Screen |
+| Hend Sayed | Setup API & Data Core, Team Details Screen, Favorite Screen, Leagues Screen |
