@@ -122,7 +122,7 @@
                 <outlet property="scoreLabel" destination="scoreLabel" id="out7"/>
                 <outlet property="statusLabel" destination="statusLabel" id="out8"/>
             </connections>
-            <point key="canvasLocation" x="133" y="92"/>
+            <point key="canvasLocation" x="132.60869565217394" y="91.741071428571431"/>
         </collectionViewCell>
     </objects>
     <resources>

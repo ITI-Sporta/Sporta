@@ -8,7 +8,7 @@
 import Foundation
 
 struct Coach: Codable, Identifiable {
-    var id: UUID { UUID() }
+    var id: UUID = UUID()
 
     let name: String?
 

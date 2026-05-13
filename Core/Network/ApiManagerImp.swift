@@ -43,6 +43,7 @@ class ApiManagerImp: ApiManager {
         AF.request(url, parameters: parameters)
             .validate()
             .responseData { response in
+                print("ApiManager: got response!")
                 switch response.result {
                 case .success(let rawData):
                     do {
@@ -76,9 +77,9 @@ class ApiManagerImp: ApiManager {
         completion: @escaping (Result<[Fixture], AllSportsError>) -> Void
     ) {
         let today = Date()
-        let pastYear = Calendar.current.date(byAdding: .year, value: -1, to: today)!
+        let pastTwoWeeks = Calendar.current.date(byAdding: .day, value: -14, to: today)!
         
-        let from = formatter.string(from: pastYear)
+        let from = formatter.string(from: pastTwoWeeks)
         let to = formatter.string(from: today)
         
         fetchFixtures(for: sport, leagueId:leagueId,from:from,to:to ,completion:completion)
@@ -90,10 +91,10 @@ class ApiManagerImp: ApiManager {
         completion: @escaping (Result<[Fixture], AllSportsError>) -> Void
     ) {
         let today = Date()
-        let nextYear = Calendar.current.date(byAdding: .year, value: 1, to: today)!
+        let nextTwoWeeks = Calendar.current.date(byAdding: .day, value: 14, to: today)!
         
         let from = formatter.string(from: today)
-        let to = formatter.string(from: nextYear)
+        let to = formatter.string(from: nextTwoWeeks)
         
         fetchFixtures(for: sport, leagueId: leagueId, from: from, to: to, completion: completion)
     }
@@ -126,54 +127,34 @@ class ApiManagerImp: ApiManager {
         fetch(sport, params: params, completion: completion)
     }
     
-    func fetchPastTeamFixtures(
+    func fetchTeamDetailsFixtures(
         for sport: Sport,
         teamId: Int,
-        leagueId: Int? = nil,
         completion: @escaping (Result<[Fixture], AllSportsError>) -> Void
     ) {
         let today = Date()
-        let pastYear = Calendar.current.date(byAdding: .year, value: -1, to: today)!
+        let nextTwoWeeks = Calendar.current.date(byAdding: .day, value: 14, to: today)!
+        let pastTwoWeeks = Calendar.current.date(byAdding: .day, value: -14, to: today)!
         
-        let from = formatter.string(from: pastYear)
-        let to = formatter.string(from: today)
+        let from = formatter.string(from: pastTwoWeeks)
+        let to = formatter.string(from: nextTwoWeeks)
         
-        fetchTeamFixtures(for: sport, teamId: teamId, leagueId: leagueId, from: from, to: to, completion: completion)
-    }
-    
-    func fetchUpcomingTeamFixtures(
-        for sport: Sport,
-        teamId: Int,
-        leagueId: Int? = nil,
-        completion: @escaping (Result<[Fixture], AllSportsError>) -> Void
-    ) {
-        let today = Date()
-        let nextYear = Calendar.current.date(byAdding: .year, value: 1, to: today)!
-        
-        let from = formatter.string(from: today)
-        let to = formatter.string(from: nextYear)
-        
-        fetchTeamFixtures(for: sport, teamId: teamId, leagueId: leagueId, from: from, to: to, completion: completion)
+        fetchTeamFixtures(for: sport, teamId: teamId, from: from, to: to, completion: completion)
     }
     
     private func fetchTeamFixtures(
         for sport: Sport,
         teamId: Int,
-        leagueId: Int? = nil,
         from: String,
         to: String,
         completion: @escaping (Result<[Fixture], AllSportsError>) -> Void
     ) {
-        var params: [String: String] = [
+        let params: [String: String] = [
             "met": "Fixtures",
             "teamId": String(teamId),
             "from": from,
             "to": to
         ]
-
-        if let leagueId = leagueId {
-            params["leagueId"] = String(leagueId)
-        }
         
         fetch(sport, params: params, completion: completion)
     }
@@ -203,6 +184,7 @@ class ApiManagerImp: ApiManager {
         ]
         fetch(sport, params: params, completion: completion)
     }
+
     func fetchTeamDetails(
         for sport: Sport,
         teamId: Int,
