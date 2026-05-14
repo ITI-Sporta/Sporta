@@ -50,4 +50,12 @@ class FavoritesPresenter: FavoritesPresenterProtocol {
     func isConnected() -> Bool {
         return NetworkMonitor.shared.isConnected
     }
+    
+    func getLeaguesCount() -> Int {
+        leagues.count
+    }
+    
+    func getLeague(at index: Int) -> FavoriteLeague {
+        leagues[index]
+    }
 }
