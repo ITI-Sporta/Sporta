@@ -37,12 +37,14 @@ class LeaguesViewController: UIViewController {
     }
     
     func setupIndicator() {
+        activityIndicator.color = UIColor(red: 255/255, green: 126/255, blue: 33/255, alpha: 1.0)
         activityIndicator.center = view.center
         activityIndicator.hidesWhenStopped = true
         view.addSubview(activityIndicator)
     }
     
     func setupRefreshControl() {
+        refreshControl.tintColor = UIColor(red: 255/255, green: 126/255, blue: 33/255, alpha: 1.0)
           refreshControl.addTarget(
               self,
               action: #selector(refreshData),
@@ -82,7 +84,9 @@ extension LeaguesViewController :LeaguesViewProtocol {
         let action = UIAlertAction(
             title: "OK",
             style: .default
-        )
+        ) { _ in
+            self.navigationController?.popViewController(animated: true)
+        }
 
         alert.addAction(action)
 

@@ -29,7 +29,9 @@ class FavoritesViewController: UIViewController {
     
     private func setupTableView() {
         let nib = UINib(nibName: "LeagueCell", bundle: nil)
+        let emptyNib = UINib(nibName: "EmptyTableCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "LeagueCell")
+        tableView.register(emptyNib, forCellReuseIdentifier: "EmptyTableCell")
         tableView.delegate   = self
         tableView.dataSource = self
     }
@@ -57,21 +59,36 @@ extension FavoritesViewController: FavoritesViewProtocol {
 extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        presenter.leagues.count
+        if presenter.getLeaguesCount() == 0 {
+                return 1
+        } else {
+            return presenter.getLeaguesCount()
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: "LeagueCell",
-            for: indexPath
-        ) as! LeagueCell
-        cell.configure(with: presenter.leagues[indexPath.row])
-        return cell
+        
+        if presenter.getLeaguesCount() == 0 {
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: "EmptyTableCell",
+                for: indexPath
+            ) as! EmptyTableCell
+
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: "LeagueCell",
+                for: indexPath
+            ) as! LeagueCell
+            cell.configure(with: presenter.getLeague(at: indexPath.row))
+            return cell
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let selectedLeague = presenter.leagues[indexPath.row]
+        let selectedLeague = presenter.getLeague(at: indexPath.row)
 
         guard let vc = storyboard?.instantiateViewController(
             withIdentifier: "LeagueDetailsViewController"
@@ -93,7 +110,11 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        90
+        if presenter.getLeaguesCount() == 0 {
+            return tableView.bounds.height
+        } else {
+            return 90
+        }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -111,7 +132,7 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
                 return
             }
             
-            self.showDeleteConfirmation(for: self.presenter.leagues[indexPath.row], at: indexPath, completion: completion)
+            self.showDeleteConfirmation(for: self.presenter.getLeague(at: indexPath.row), at: indexPath, completion: completion)
         }
 
         deleteAction.image = UIImage(systemName: "trash")
@@ -138,7 +159,6 @@ extension FavoritesViewController {
             }
             
             self.presenter.delete(league: league)
-            self.tableView.deleteRows(at: [indexPath], with: .automatic)
             completion(true)
         }
     }

@@ -8,11 +8,12 @@
 import Foundation
 
 protocol FavoritesPresenterProtocol {
-    var leagues: [FavoriteLeague] { get }
     func delete(league: FavoriteLeague)
     func insert(league: FavoriteLeague)
     func reloadData()
     func isConnected() -> Bool
+    func getLeaguesCount() -> Int
+    func getLeague(at index: Int) -> FavoriteLeague
 }
 
 protocol FavoritesViewProtocol: AnyObject {

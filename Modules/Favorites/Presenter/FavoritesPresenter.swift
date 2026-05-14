@@ -26,6 +26,7 @@ class FavoritesPresenter: FavoritesPresenterProtocol {
             leagues.removeAll {
                 $0.id == league.id
             }
+            reloadData()
             view?.show(type: .info, message: "Deleted \(league.name) from favorites")
         } else {
             view?.show(type: .error, message: "Unable to delete \(league.name) from favorites")
@@ -49,5 +50,13 @@ class FavoritesPresenter: FavoritesPresenterProtocol {
     
     func isConnected() -> Bool {
         return NetworkMonitor.shared.isConnected
+    }
+    
+    func getLeaguesCount() -> Int {
+        leagues.count
+    }
+    
+    func getLeague(at index: Int) -> FavoriteLeague {
+        leagues[index]
     }
 }

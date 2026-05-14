@@ -155,14 +155,16 @@ extension TeamDetailsViewController : UICollectionViewDelegateFlowLayout {
             withReuseIdentifier: K.header,
             for: indexPath
         ) as! TeamsHeaderView
-        
-        switch indexPath.section {
-        case 0:
-            header.setText("Info")
-        case 1:
-            header.setText("Players")
-        default :
-            header.setText("Fixtures")
+        header.setText("")
+        if presenter.getTeamDetails() != nil {
+            switch indexPath.section {
+            case 0:
+                header.setText("Info")
+            case 1:
+                header.setText("Players")
+            default :
+                header.setText("Fixtures")
+            }
         }
         return header
     }
@@ -197,7 +199,9 @@ extension TeamDetailsViewController: TeamDetailsViewProtocol {
         let action = UIAlertAction(
             title: "OK",
             style: .default
-        )
+        ) { _ in
+            self.navigationController?.popViewController(animated: true)
+        }
 
         alert.addAction(action)
 
