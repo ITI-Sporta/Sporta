@@ -159,7 +159,6 @@ extension FavoritesViewController {
             }
             
             self.presenter.delete(league: league)
-            self.tableView.deleteRows(at: [indexPath], with: .automatic)
             completion(true)
         }
     }
