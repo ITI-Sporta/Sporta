@@ -68,6 +68,8 @@
 		D9C26C672FAC943A00FF489B /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C26C662FAC943A00FF489B /* MainTabBarController.swift */; };
 		D9C26C722FACA1EB00FF489B /* SportsContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C26C712FACA1EB00FF489B /* SportsContract.swift */; };
 		D9C26C742FACA23100FF489B /* SportsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C26C732FACA23100FF489B /* SportsPresenter.swift */; };
+		D9C2AACA2FB78E6600DB3985 /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C2AAC92FB78E6600DB3985 /* MockURLProtocol.swift */; };
+		D9C2AACC2FB79AAD00DB3985 /* ApiManagerMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C2AACB2FB79AAD00DB3985 /* ApiManagerMockTests.swift */; };
 		D9DCE3162FB49B8200C97209 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DCE3152FB49B8200C97209 /* UserDefaultsKeys.swift */; };
 		D9DCE31C2FB4CA2100C97209 /* ToastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DCE31B2FB4CA2100C97209 /* ToastManager.swift */; };
 		D9E15BCA2FADDE3A00F6F9AB /* MatchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E15BC82FADDE3A00F6F9AB /* MatchCell.swift */; };
@@ -160,6 +162,8 @@
 		D9C26C662FAC943A00FF489B /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		D9C26C712FACA1EB00FF489B /* SportsContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsContract.swift; sourceTree = "<group>"; };
 		D9C26C732FACA23100FF489B /* SportsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsPresenter.swift; sourceTree = "<group>"; };
+		D9C2AAC92FB78E6600DB3985 /* MockURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
+		D9C2AACB2FB79AAD00DB3985 /* ApiManagerMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManagerMockTests.swift; sourceTree = "<group>"; };
 		D9DCE3152FB49B8200C97209 /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 		D9DCE31B2FB4CA2100C97209 /* ToastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastManager.swift; sourceTree = "<group>"; };
 		D9E15BC82FADDE3A00F6F9AB /* MatchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCell.swift; sourceTree = "<group>"; };
@@ -270,6 +274,8 @@
 			isa = PBXGroup;
 			children = (
 				9F4F1D562FA917F800936107 /* ApiManagerTests.swift */,
+				D9C2AAC92FB78E6600DB3985 /* MockURLProtocol.swift */,
+				D9C2AACB2FB79AAD00DB3985 /* ApiManagerMockTests.swift */,
 			);
 			path = SportaTests;
 			sourceTree = "<group>";
@@ -758,6 +764,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F4F1D572FA917F800936107 /* ApiManagerTests.swift in Sources */,
+				D9C2AACC2FB79AAD00DB3985 /* ApiManagerMockTests.swift in Sources */,
+				D9C2AACA2FB78E6600DB3985 /* MockURLProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

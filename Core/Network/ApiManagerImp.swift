@@ -24,8 +24,11 @@ class ApiManagerImp: ApiManager {
     static let shared = ApiManagerImp()
     let formatter = DateFormatter()
     
-    private init() {
+    private let session: Session
+    
+    init(session:Session = .default) {
         formatter.dateFormat = "yyyy-MM-dd"
+        self.session = session
     }
     
     private let baseUrl = "https://apiv2.allsportsapi.com"
@@ -40,7 +43,7 @@ class ApiManagerImp: ApiManager {
         var parameters: [String: String] = ["APIkey": apiKey]
         parameters.merge(params) { _, new in new }
 
-        AF.request(url, parameters: parameters)
+        self.session.request(url, parameters: parameters)
             .validate()
             .responseData { response in
                 print("ApiManager: got response!")
