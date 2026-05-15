@@ -18,7 +18,7 @@
 		9F4F1D472FA917EE00936107 /* Sporta.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9F4F1D452FA917EE00936107 /* Sporta.xcdatamodeld */; };
 		9F4F1D492FA917F700936107 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F4F1D482FA917F700936107 /* Assets.xcassets */; };
 		9F4F1D4C2FA917F700936107 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F4F1D4A2FA917F700936107 /* LaunchScreen.storyboard */; };
-		9F4F1D572FA917F800936107 /* SportaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4F1D562FA917F800936107 /* SportaTests.swift */; };
+		9F4F1D572FA917F800936107 /* ApiManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4F1D562FA917F800936107 /* ApiManagerTests.swift */; };
 		9F4F1D612FA917F800936107 /* SportaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4F1D602FA917F800936107 /* SportaUITests.swift */; };
 		9F4F1D632FA917F800936107 /* SportaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4F1D622FA917F800936107 /* SportaUITestsLaunchTests.swift */; };
 		9F60E06C2FB48BB900706E3B /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 9F60E06B2FB48BB900706E3B /* Lottie */; };
@@ -113,7 +113,7 @@
 		9F4F1D4B2FA917F700936107 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F4F1D4D2FA917F700936107 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F4F1D522FA917F700936107 /* SportaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SportaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9F4F1D562FA917F800936107 /* SportaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportaTests.swift; sourceTree = "<group>"; };
+		9F4F1D562FA917F800936107 /* ApiManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManagerTests.swift; sourceTree = "<group>"; };
 		9F4F1D5C2FA917F800936107 /* SportaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SportaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F4F1D602FA917F800936107 /* SportaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportaUITests.swift; sourceTree = "<group>"; };
 		9F4F1D622FA917F800936107 /* SportaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportaUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -269,7 +269,7 @@
 		9F4F1D552FA917F700936107 /* SportaTests */ = {
 			isa = PBXGroup;
 			children = (
-				9F4F1D562FA917F800936107 /* SportaTests.swift */,
+				9F4F1D562FA917F800936107 /* ApiManagerTests.swift */,
 			);
 			path = SportaTests;
 			sourceTree = "<group>";
@@ -757,7 +757,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F4F1D572FA917F800936107 /* SportaTests.swift in Sources */,
+				9F4F1D572FA917F800936107 /* ApiManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
