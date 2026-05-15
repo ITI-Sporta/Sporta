@@ -26,6 +26,7 @@ class ApiManagerTests: XCTestCase {
             switch result {
             case .success(let leagues):
                 XCTAssertFalse(leagues.isEmpty)
+                XCTAssertEqual(leagues.first?.name ?? "", "UEFA Europa League")
                 exp.fulfill()
             case .failure(_):
                 XCTFail()
@@ -39,6 +40,7 @@ class ApiManagerTests: XCTestCase {
         apiManager.fetchPastFixtures(for: .football, leagueId: 177) { result in
             switch result {
             case .success(let fixtures):
+                XCTAssertLessThan(0, fixtures.count)
                 XCTAssertFalse(fixtures.isEmpty)
                 exp.fulfill()
             case .failure(_):
@@ -53,6 +55,7 @@ class ApiManagerTests: XCTestCase {
         apiManager.fetchUpcomingFixtures(for: .football, leagueId: 177) { result in
             switch result {
             case .success(let fixtures):
+                XCTAssertLessThan(0, fixtures.count)
                 XCTAssertFalse(fixtures.isEmpty)
                 exp.fulfill()
             case .failure(_):
@@ -67,6 +70,7 @@ class ApiManagerTests: XCTestCase {
         apiManager.fetchTeams(for: .football, leagueId: 177) { result in
             switch result {
             case .success(let teams):
+                XCTAssertEqual(teams.first?.name, "Karela United")
                 XCTAssertFalse(teams.isEmpty)
                 exp.fulfill()
             case .failure(_):
@@ -81,7 +85,7 @@ class ApiManagerTests: XCTestCase {
         apiManager.fetchTeamDetailsFixtures(for: .football, teamId: 4281) { result in
             switch result {
             case .success(let teamFixtures):
-                XCTAssertFalse(teamFixtures.isEmpty)
+                XCTAssertNotNil(teamFixtures.first)
                 exp.fulfill()
             case .failure(_):
                 XCTFail()
@@ -95,7 +99,7 @@ class ApiManagerTests: XCTestCase {
         apiManager.fetchTeamDetails(for: .football, teamId: 4281) { result in
             switch result {
             case .success(let teamDetails):
-                XCTAssertFalse(teamDetails.isEmpty)
+                XCTAssertGreaterThan(teamDetails.count, 0)
                 exp.fulfill()
             case .failure(_):
                 XCTFail()
