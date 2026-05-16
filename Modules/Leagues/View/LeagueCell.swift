@@ -18,16 +18,42 @@ class LeagueCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
+        setupUI()
+    }
+    
+    private func setupUI() {
+
+        selectionStyle = .none
+        backgroundColor = .systemBackground
+
         leagueImageView.layer.cornerRadius = 25
         leagueImageView.clipsToBounds = true
+        leagueImageView.contentMode = .scaleAspectFit
 
         countryImageView.layer.cornerRadius = 15
         countryImageView.clipsToBounds = true
+        countryImageView.contentMode = .scaleAspectFill
+
+        leagueNameLabel.font = .boldSystemFont(ofSize: 18)
+
+        countryNameLabel.font = .systemFont(ofSize: 14, weight: .medium)
+        countryNameLabel.textColor = .secondaryLabel
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        leagueImageView.image = nil
+        countryImageView.image = nil
+
+        leagueNameLabel.text = nil
+        countryNameLabel.text = nil
     }
 
     func configure(with league: League) {
         leagueNameLabel.text = league.name
         countryNameLabel.text = league.country
+
         leagueImageView.setImage(league.logo ?? "")
         countryImageView.setImage(league.countryLogo ?? "")
     }
@@ -35,6 +61,7 @@ class LeagueCell: UITableViewCell {
     func configure(with league: FavoriteLeague) {
         leagueNameLabel.text = league.name
         countryNameLabel.text = league.country
+
         leagueImageView.setImage(league.logo)
         countryImageView.setImage(league.countryLogo)
     }

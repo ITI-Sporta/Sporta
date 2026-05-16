@@ -18,5 +18,7 @@ protocol FavoritesPresenterProtocol {
 
 protocol FavoritesViewProtocol: AnyObject {
     func reloadData()
+    func deleteRowFromTable(at index: Int)
+    func reloadRowForEmptyState(at index: Int)
     func show(type: ToastType, message: String)
 }
