@@ -13,20 +13,20 @@ class LeaguesViewController: UIViewController {
     var sport: Sport!
     var presenter: LeaguesPresenterProtocol!
     let activityIndicator = UIActivityIndicatorView(style: .large)
-    
     let refreshControl = UIRefreshControl()
-    
+    private let searchController = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationController?.setNavigationBarHidden(false, animated: false)
-        title = "Sporta"
+        title = "Leagues"
         
         setupIndicator()
         presenter = LeaguesPresenter(view: self, sport: sport)
         setupRefreshControl()
         setupTableView()
+        setupSearchController()
     }
     
     private func setupTableView() {
@@ -45,20 +45,31 @@ class LeaguesViewController: UIViewController {
     
     func setupRefreshControl() {
         refreshControl.tintColor = UIColor(red: 255/255, green: 126/255, blue: 33/255, alpha: 1.0)
-          refreshControl.addTarget(
-              self,
-              action: #selector(refreshData),
-              for: .valueChanged
-          )
-          tableView.refreshControl = refreshControl
-      }
+        refreshControl.addTarget(
+            self,
+            action: #selector(refreshData),
+            for: .valueChanged
+        )
+        tableView.refreshControl = refreshControl
+    }
 
-      @objc func refreshData() {
-          presenter.fetchData()
-      }
+    @objc func refreshData() {
+        presenter.fetchData()
+    }
+    
+    private func setupSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search by name or country"
+        searchController.searchBar.tintColor = UIColor(red: 255/255, green: 126/255, blue: 33/255, alpha: 1.0)
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        definesPresentationContext = true
+    }
 }
 
-extension LeaguesViewController :LeaguesViewProtocol {
+// MARK: - LeaguesViewProtocol
+extension LeaguesViewController: LeaguesViewProtocol {
     
     func showLoading() {
         activityIndicator.startAnimating()
@@ -74,26 +85,23 @@ extension LeaguesViewController :LeaguesViewProtocol {
     }
     
     func showError(_ message: String) {
-
         let alert = UIAlertController(
             title: "Error",
             message: message,
             preferredStyle: .alert
         )
-
         let action = UIAlertAction(
             title: "OK",
             style: .default
         ) { _ in
             self.navigationController?.popViewController(animated: true)
         }
-
         alert.addAction(action)
-
         present(alert, animated: true)
     }
 }
 
+// MARK: - UITableViewDelegate, UITableViewDataSource
 extension LeaguesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -110,7 +118,6 @@ extension LeaguesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         let selectedLeague = presenter.getLeague(at: indexPath.row)
 
         guard let vc = storyboard?.instantiateViewController(
@@ -118,7 +125,7 @@ extension LeaguesViewController: UITableViewDelegate, UITableViewDataSource {
         ) as? LeagueDetailsViewController else {
             return
         }
-        if(NetworkMonitor.shared.isConnected){
+        if NetworkMonitor.shared.isConnected {
             vc.hidesBottomBarWhenPushed = true
             vc.currentLeague = selectedLeague
             vc.sport = sport
@@ -126,8 +133,6 @@ extension LeaguesViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             showError("No internet connection")
         }
-        
-        
         tableView.deselectRow(at: indexPath, animated: false)
     }
     
@@ -137,5 +142,12 @@ extension LeaguesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         "\(sport.displayName) Leagues"
+    }
+}
+
+// MARK: - UISearchResultsUpdating
+extension LeaguesViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        presenter.search(query: searchController.searchBar.text ?? "")
     }
 }

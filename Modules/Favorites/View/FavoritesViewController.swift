@@ -16,7 +16,7 @@ class FavoritesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(false, animated: false)
-        title = "Sporta"
+        title = "Favorites"
         presenter = FavoritesPresenter(view: self)
         setupTableView()
     }

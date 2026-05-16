@@ -10,6 +10,7 @@ import Foundation
 protocol LeaguesPresenterProtocol {
     var numberOfLeagues: Int { get }
     func fetchData()
+    func search(query: String)
     func getLeague(at index: Int) -> League
 }
 
