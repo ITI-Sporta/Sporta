@@ -23,10 +23,18 @@ class FavoritesPresenter: FavoritesPresenterProtocol {
         let success = db.deleteFavoriteLeague(by: league.id)
         
         if success {
+            let targetIndex = leagues.firstIndex(where: { $0.id == league.id })
             leagues.removeAll {
                 $0.id == league.id
             }
-            reloadData()
+            
+            if let index = targetIndex {
+                if leagues.isEmpty {
+                    view?.reloadRowForEmptyState(at: index)
+                } else {
+                    view?.deleteRowFromTable(at: index)
+                }
+            }
             view?.show(type: .info, message: "Deleted \(league.name) from favorites")
         } else {
             view?.show(type: .error, message: "Unable to delete \(league.name) from favorites")

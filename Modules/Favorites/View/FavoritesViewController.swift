@@ -16,7 +16,7 @@ class FavoritesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(false, animated: false)
-        title = "Sporta"
+        title = "Favorites"
         presenter = FavoritesPresenter(view: self)
         setupTableView()
     }
@@ -44,8 +44,21 @@ extension FavoritesViewController: FavoritesViewProtocol {
         tableView.reloadData()
     }
     
+    func deleteRowFromTable(at index: Int) {
+        let indexPath = IndexPath(row: index, section: 0)
+        tableView.performBatchUpdates({
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }, completion: nil)
+    }
+    
+    func reloadRowForEmptyState(at index: Int) {
+        let indexPath = IndexPath(row: index, section: 0)
+        tableView.performBatchUpdates({
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+        }, completion: nil)
+    }
+    
     func show(type: ToastType, message: String) {
-        
         ToastManager.shared.show(
             message: message,
             type: type,
@@ -73,7 +86,7 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
                 withIdentifier: "EmptyTableCell",
                 for: indexPath
             ) as! EmptyTableCell
-
+            cell.selectionStyle = .none
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(
@@ -87,26 +100,38 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let selectedLeague = presenter.getLeague(at: indexPath.row)
-
-        guard let vc = storyboard?.instantiateViewController(
-            withIdentifier: "LeagueDetailsViewController"
-        ) as? LeagueDetailsViewController else {
+        if presenter.getLeaguesCount() == 0 {
             return
         }
-        if(presenter.isConnected()){
-            vc.hidesBottomBarWhenPushed = true
-            vc.currentLeague = selectedLeague.toLeague()
-            vc.sport = selectedLeague.sport
-            navigationController?.pushViewController(vc, animated: true)
-        }
-        else {
-            show(type: .error, message: "No internet connection")
-        }
-
         
-        tableView.deselectRow(at: indexPath, animated: false)
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        guard let cell = tableView.cellForRow(at: indexPath) else { return }
+        
+        UIView.animate(withDuration: 0.1, animations: {
+            cell.transform = CGAffineTransform(scaleX: 0.96, y: 0.96)
+        }) { _ in
+            UIView.animate(withDuration: 0.1, animations: {
+                cell.transform = .identity
+            }) { _ in
+                let selectedLeague = self.presenter.getLeague(at: indexPath.row)
+
+                guard let vc = self.storyboard?.instantiateViewController(
+                    withIdentifier: "LeagueDetailsViewController"
+                ) as? LeagueDetailsViewController else {
+                    return
+                }
+                
+                if self.presenter.isConnected() {
+                    vc.hidesBottomBarWhenPushed = true
+                    vc.currentLeague = selectedLeague.toLeague()
+                    vc.sport = selectedLeague.sport
+                    self.navigationController?.pushViewController(vc, animated: true)
+                } else {
+                    self.show(type: .error, message: "No internet connection")
+                }
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -122,26 +147,51 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        true
+        if presenter.getLeaguesCount() == 0 {
+            return false
+        }
+        return true
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] action, view, completion in
-            
-            guard let self = self else {
-                return
-            }
-            
+        if presenter.getLeaguesCount() == 0 {
+            return nil
+        }
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: nil) { [weak self] action, view, completion in
+            guard let self = self else { return }
             self.showDeleteConfirmation(for: self.presenter.getLeague(at: indexPath.row), at: indexPath, completion: completion)
         }
 
-        deleteAction.image = UIImage(systemName: "trash")
-        deleteAction.backgroundColor = .systemRed
+        deleteAction.image = makeDeleteActionImage()
+        deleteAction.backgroundColor = .secondarySystemBackground
 
         let config = UISwipeActionsConfiguration(actions: [deleteAction])
-
+        config.performsFirstActionWithFullSwipe = false
         return config
     }
+
+    private func makeDeleteActionImage() -> UIImage {
+        let size = CGSize(width: 70, height: 90)
+        let renderer = UIGraphicsImageRenderer(size: size)
+
+        return renderer.image { ctx in
+            let rectInset = CGRect(x: 4, y: 12, width: 62, height: 66)
+            let roundedRect = UIBezierPath(roundedRect: rectInset, cornerRadius: 18)
+            UIColor(red: 0.886, green: 0.294, blue: 0.290, alpha: 1).setFill()
+            roundedRect.fill()
+
+            let iconConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .regular)
+            let icon = UIImage(systemName: "trash", withConfiguration: iconConfig)?
+                .withTintColor(.white, renderingMode: .alwaysOriginal)
+            let iconSize = icon?.size ?? .zero
+            icon?.draw(at: CGPoint(
+                x: rectInset.midX - iconSize.width / 2,
+                y: rectInset.midY - iconSize.height / 2
+            ))
+        }
+    }
+    
 }
 
 extension FavoritesViewController {

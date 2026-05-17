@@ -59,16 +59,34 @@ class MatchCell: UICollectionViewCell {
     
     // MARK: - Actions
     @objc private func homeTapped() {
-        delegate?.didTapHomeTeam(in: self)
-    }
-    
-    @objc private func awayTapped() {
-        delegate?.didTapAwayTeam(in: self)
-    }
+            UIView.animate(withDuration: 0.1, animations: {
+                self.homeTeamContainer.transform = CGAffineTransform(scaleX: 0.92, y: 0.92)
+            }) { _ in
+                UIView.animate(withDuration: 0.1, animations: {
+                    self.homeTeamContainer.transform = .identity
+                }) { _ in
+                    self.delegate?.didTapHomeTeam(in: self)
+                }
+            }
+        }
+        
+        @objc private func awayTapped() {
+            UIView.animate(withDuration: 0.1, animations: {
+                self.awayTeamContainer.transform = CGAffineTransform(scaleX: 0.92, y: 0.92)
+            }) { _ in
+                UIView.animate(withDuration: 0.1, animations: {
+                    self.awayTeamContainer.transform = .identity
+                }) { _ in
+                    self.delegate?.didTapAwayTeam(in: self)
+                }
+            }
+        }
     
     // MARK: - Reuse
     override func prepareForReuse() {
         super.prepareForReuse()
+        homeTeamContainer.transform = .identity
+        awayTeamContainer.transform = .identity
         homeLogo.image    = nil
         awayLogo.image    = nil
         homeName.text     = nil
