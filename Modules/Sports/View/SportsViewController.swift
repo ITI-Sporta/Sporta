@@ -19,6 +19,7 @@ class SportsViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor(red: 0.960, green: 0.960, blue: 0.960, alpha: 1.0)
         presenter = SportsPresenter(view: self)
         setupCollectionView()
     }
@@ -121,10 +122,20 @@ extension SportsViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension SportsViewController: UICollectionViewDelegate {
     
-    func collectionView(_ collectionView: UICollectionView,
-                        didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        presenter.didSelectSport(at: indexPath.item)
+        
+        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
+        
+        UIView.animate(withDuration: 0.1, animations: {
+            cell.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+        }) { _ in
+            UIView.animate(withDuration: 0.1, animations: {
+                cell.transform = .identity
+            }) { _ in
+                self.presenter.didSelectSport(at: indexPath.item)
+            }
+        }
     }
 }
 

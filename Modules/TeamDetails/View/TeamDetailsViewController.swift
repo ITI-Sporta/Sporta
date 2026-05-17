@@ -1,14 +1,15 @@
-//
-//  TeamDetailsViewController.swift
-//  Sporta
-//
-//  Created by Mohamed Ayman on 05/05/2026.
-//
-
 import UIKit
 
-
 class TeamDetailsViewController: UICollectionViewController {
+    
+    enum SectionType: CaseIterable {
+        case info
+        case players
+        case fixtures
+    }
+    
+    private var activeSections: [SectionType] = []
+    
     var teamId: Int!
     var sport: Sport!
     
@@ -17,6 +18,7 @@ class TeamDetailsViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor(red: 0.960, green: 0.960, blue: 0.960, alpha: 1.0)
         presenter = TeamDetailsPresenter(view: self)
         setupCollectionView()
         setupSpinner()
@@ -46,58 +48,86 @@ class TeamDetailsViewController: UICollectionViewController {
         spinner.center = view.center
         view.addSubview(spinner)
     }
+    
+    private func updateActiveSections() {
+        var sections: [SectionType] = []
+        
+        if presenter.getTeamDetails() != nil {
+            sections.append(.info)
+        }
+        
+        if presenter.getPlayersCount() > 0 {
+            sections.append(.players)
+        }
+        
+        if presenter.getFixturesCount() > 0 {
+            sections.append(.fixtures)
+        }
+        
+        self.activeSections = sections
+    }
 }
 
 extension TeamDetailsViewController {
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 3
+        return activeSections.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch section {
-        case 0 : return presenter.getTeamDetails() != nil ? 1 : 0
-        case 1 : return presenter.getPlayersCount()
-        default : return presenter.getFixturesCount()
+        let currentSectionType = activeSections[section]
+        
+        switch currentSectionType {
+        case .info:
+            return 1
+        case .players:
+            return presenter.getPlayersCount()
+        case .fixtures:
+            return presenter.getFixturesCount()
         }
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    
-        switch indexPath.section {
-        case 0 :
+        let currentSectionType = activeSections[indexPath.section]
+        
+        switch currentSectionType {
+        case .info:
             let teamDetails = presenter.getTeamDetails() ?? TeamDetails.getEmptyTeamDetails()
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.teamDetailCell, for: indexPath) as! TeamDetailCell
             cell.configure(with: teamDetails)
             return cell
         
-        case 1 :
+        case .players:
             let player = presenter.getPlayer(at: indexPath.row)
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.playerCell, for: indexPath) as! PlayerCell
             cell.configure(with: player)
             return cell
         
-        default :
+        case .fixtures:
             let fixture = presenter.getFixture(at: indexPath.row)
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.matchCell, for: indexPath) as! MatchCell
             cell.configure(with: fixture)
             return cell
-        
         }
     }
     
     func createLayout() -> UICollectionViewCompositionalLayout {
-        return UICollectionViewCompositionalLayout { sectionIndex, _ in
-            switch sectionIndex {
-            case 0 : return self.teamDetailsSection()
-            case 1 : return self.playersSection()
-            default : return self.fixtureSection()
+        return UICollectionViewCompositionalLayout { [weak self] sectionIndex, _ in
+            guard let self = self, sectionIndex < self.activeSections.count else { return nil }
+            let currentSectionType = self.activeSections[sectionIndex]
+            
+            switch currentSectionType {
+            case .info:
+                return self.teamDetailsSection()
+            case .players:
+                return self.playersSection()
+            case .fixtures:
+                return self.fixtureSection()
             }
         }
     }
     
     func teamDetailsSection() -> NSCollectionLayoutSection {
-        
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(164))
@@ -105,13 +135,11 @@ extension TeamDetailsViewController {
     
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
-        section.boundarySupplementaryItems = [makeHeader()]
         return section
-
     }
     
     func playersSection() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .absolute(148), heightDimension: .absolute(252))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .absolute(160), heightDimension: .absolute(280))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: itemSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
@@ -146,24 +174,27 @@ extension TeamDetailsViewController {
     }
 }
 
-extension TeamDetailsViewController : UICollectionViewDelegateFlowLayout {
+extension TeamDetailsViewController: UICollectionViewDelegateFlowLayout {
     override func collectionView(_ collectionView: UICollectionView,
-                        viewForSupplementaryElementOfKind kind: String,
-                        at indexPath: IndexPath) -> UICollectionReusableView {
+                                viewForSupplementaryElementOfKind kind: String,
+                                at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(
             ofKind: kind,
             withReuseIdentifier: K.header,
             for: indexPath
         ) as! TeamsHeaderView
+        
         header.setText("")
-        if presenter.getTeamDetails() != nil {
-            switch indexPath.section {
-            case 0:
-                header.setText("Info")
-            case 1:
+        
+        if indexPath.section < activeSections.count {
+            let currentSectionType = activeSections[indexPath.section]
+            switch currentSectionType {
+            case .players:
                 header.setText("Players")
-            default :
+            case .fixtures:
                 header.setText("Fixtures")
+            default:
+                header.setText("")
             }
         }
         return header
@@ -173,6 +204,7 @@ extension TeamDetailsViewController : UICollectionViewDelegateFlowLayout {
 extension TeamDetailsViewController: TeamDetailsViewProtocol {
     func reloadData() {
         DispatchQueue.main.async {
+            self.updateActiveSections()
             self.collectionView.reloadData()
         }
     }
@@ -204,7 +236,6 @@ extension TeamDetailsViewController: TeamDetailsViewProtocol {
         }
 
         alert.addAction(action)
-
         present(alert, animated: true)
     }
 }

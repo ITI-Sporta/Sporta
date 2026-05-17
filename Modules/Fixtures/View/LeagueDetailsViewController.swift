@@ -257,7 +257,17 @@ extension LeagueDetailsViewController: UICollectionViewDelegate {
         guard let section = LeagueDetailSection(rawValue: indexPath.section) else { return }
         
         if case .teams = section {
-            navigateToTeamDetails(with: presenter.team(at: indexPath.item))
+            guard let cell = collectionView.cellForItem(at: indexPath) else { return }
+            UIView.animate(withDuration: 0.1, animations: {
+                cell.transform = CGAffineTransform(scaleX: 0.92, y: 0.92)
+            }) { _ in
+                UIView.animate(withDuration: 0.1, animations: {
+                    cell.transform = .identity
+                }) { _ in
+                    let selectedTeam = self.presenter.team(at: indexPath.item)
+                    self.navigateToTeamDetails(with: selectedTeam)
+                }
+            }
         }
     }
 }

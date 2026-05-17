@@ -86,7 +86,7 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
                 withIdentifier: "EmptyTableCell",
                 for: indexPath
             ) as! EmptyTableCell
-
+            cell.selectionStyle = .none
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(
@@ -100,26 +100,38 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let selectedLeague = presenter.getLeague(at: indexPath.row)
-
-        guard let vc = storyboard?.instantiateViewController(
-            withIdentifier: "LeagueDetailsViewController"
-        ) as? LeagueDetailsViewController else {
+        if presenter.getLeaguesCount() == 0 {
             return
         }
-        if(presenter.isConnected()){
-            vc.hidesBottomBarWhenPushed = true
-            vc.currentLeague = selectedLeague.toLeague()
-            vc.sport = selectedLeague.sport
-            navigationController?.pushViewController(vc, animated: true)
-        }
-        else {
-            show(type: .error, message: "No internet connection")
-        }
-
         
-        tableView.deselectRow(at: indexPath, animated: false)
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        guard let cell = tableView.cellForRow(at: indexPath) else { return }
+        
+        UIView.animate(withDuration: 0.1, animations: {
+            cell.transform = CGAffineTransform(scaleX: 0.96, y: 0.96)
+        }) { _ in
+            UIView.animate(withDuration: 0.1, animations: {
+                cell.transform = .identity
+            }) { _ in
+                let selectedLeague = self.presenter.getLeague(at: indexPath.row)
+
+                guard let vc = self.storyboard?.instantiateViewController(
+                    withIdentifier: "LeagueDetailsViewController"
+                ) as? LeagueDetailsViewController else {
+                    return
+                }
+                
+                if self.presenter.isConnected() {
+                    vc.hidesBottomBarWhenPushed = true
+                    vc.currentLeague = selectedLeague.toLeague()
+                    vc.sport = selectedLeague.sport
+                    self.navigationController?.pushViewController(vc, animated: true)
+                } else {
+                    self.show(type: .error, message: "No internet connection")
+                }
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -135,10 +147,17 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        true
+        if presenter.getLeaguesCount() == 0 {
+            return false
+        }
+        return true
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        if presenter.getLeaguesCount() == 0 {
+            return nil
+        }
+        
         let deleteAction = UIContextualAction(style: .destructive, title: nil) { [weak self] action, view, completion in
             guard let self = self else { return }
             self.showDeleteConfirmation(for: self.presenter.getLeague(at: indexPath.row), at: indexPath, completion: completion)
@@ -172,7 +191,6 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
             ))
         }
     }
-    
     
 }
 

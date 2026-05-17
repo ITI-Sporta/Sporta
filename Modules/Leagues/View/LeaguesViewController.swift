@@ -118,22 +118,34 @@ extension LeaguesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedLeague = presenter.getLeague(at: indexPath.row)
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        guard let cell = tableView.cellForRow(at: indexPath) else { return }
+        
+        UIView.animate(withDuration: 0.1, animations: {
+            cell.transform = CGAffineTransform(scaleX: 0.96, y: 0.96)
+        }) { _ in
+            UIView.animate(withDuration: 0.1, animations: {
+                cell.transform = .identity
+            }) { _ in
+                let selectedLeague = self.presenter.getLeague(at: indexPath.row)
 
-        guard let vc = storyboard?.instantiateViewController(
-            withIdentifier: "LeagueDetailsViewController"
-        ) as? LeagueDetailsViewController else {
-            return
+                guard let vc = self.storyboard?.instantiateViewController(
+                    withIdentifier: "LeagueDetailsViewController"
+                ) as? LeagueDetailsViewController else {
+                    return
+                }
+                
+                if NetworkMonitor.shared.isConnected {
+                    vc.hidesBottomBarWhenPushed = true
+                    vc.currentLeague = selectedLeague
+                    vc.sport = self.sport
+                    self.navigationController?.pushViewController(vc, animated: true)
+                } else {
+                    self.showError("No internet connection")
+                }
+            }
         }
-        if NetworkMonitor.shared.isConnected {
-            vc.hidesBottomBarWhenPushed = true
-            vc.currentLeague = selectedLeague
-            vc.sport = sport
-            navigationController?.pushViewController(vc, animated: true)
-        } else {
-            showError("No internet connection")
-        }
-        tableView.deselectRow(at: indexPath, animated: false)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
